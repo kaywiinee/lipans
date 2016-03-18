@@ -1,0 +1,25 @@
+#core.core-bg-2
+  #page-header
+    .container
+      h1 Tất cả sản phẩm
+  .container
+    .row
+      .col-md-8
+        #page-content
+          ul.product-list
+            - @products.each do |product|
+              li.product
+                .product-inner
+                  h3.product-title
+                    = link_to product.name , product_path(product.id)
+                  p.product-image
+                    = link_to product_path(product.id)
+                      = image_tag product.image_url, alt: product.name
+                  .product-info
+                    .product-price
+                      | #{product.price}.000VND
+                    = link_to 'Xem chi tiết', product_path(product.id), class: 'product-btn c-button m-type-2 m-small'
+          - if @total > 1
+            = render 'part/pagination'
+      .col-md-4
+        = render 'part/side_bar'

@@ -1,0 +1,25 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#main-slider {
+  .slide1 {
+    background-image: image-url('slideshow/1.jpg');
+  }
+  .slide2 {
+    background-image: image-url('slideshow/2.jpg');
+  }
+  .slide3 {
+    background-image: image-url('slideshow/3.jpg');
+  }
+  .slide4 {
+    background-image: image-url('slideshow/4.jpg');
+  }
+}
+.hide {
+  display: none !important;
+}
+.sidebar-links {
+  .m-active a {
+    color: #edcf56;
+  }
+}

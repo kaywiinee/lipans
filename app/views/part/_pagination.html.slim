@@ -1,0 +1,20 @@
+ul.c-pagination
+  - class_prev = @page == 1 ? 'hide' : ''
+  li.prev class="#{class_prev}"
+    - if @type.present?
+      = link_to '<' , type_page_path(id: @id, page: @page-1)
+    - else
+      = link_to '<' , all_products_page_path(@page-1)
+  - (1..@total).each do |num|
+    - class_pagi = @page == num ? 'm-active' : ''
+    li class="#{class_pagi}"
+      - if @type.present?
+        = link_to num , type_page_path(id: @id, page:num)
+      - else
+        = link_to num , all_products_page_path(num)
+  - class_next = @page == @total ? 'hide' : ''
+  li.next class="#{class_next}"
+    - if @type.present?
+      = link_to '>' , type_page_path(id: @id, page:@page+1)
+    - else
+      = link_to '>' , all_products_page_path(@page+1)
