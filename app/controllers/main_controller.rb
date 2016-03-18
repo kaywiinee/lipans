@@ -58,16 +58,4 @@ class MainController < ApplicationController
     @best_products = Product.where(is_best: true)
   end
 
-  def contact
-  end
-
-  def send_contact
-    respond_to do |format|
-      if 1==1
-        format.html {redirect_to thanks_path}
-      else
-        format.html {redirect_to contact_path}
-      end
-    end
-  end
 end

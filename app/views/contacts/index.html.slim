@@ -6,7 +6,7 @@
     #page-content
       .various-content
         section
-          .col-lg-4
+          .col-lg-6
             .c-icon-block
               i.ico.fa.fa-map-marker
               .icon-block-inner
@@ -16,7 +16,7 @@
                   | 13/13B Nguyễn Thị Thập, F.6
                   br/
                   | Tp. Mỹ Tho, T. Tiền Giang
-          .col-lg-4
+          .col-lg-6
             .c-icon-block
               i.ico.fa.fa-info-circle
               .icon-block-inner
@@ -57,8 +57,8 @@
           //           .form-field
           //             button#ok.submit-btn.c-button name="ok" type="submit"  Gửi
           .row
-            .col-lg-8
-              = form_tag(send_contact_path, :method => "post", class: "default-form m-ajax-form", id: "contact-form") do
+            .col-lg-12
+              = form_for(@contact, action: :create, html: {id: 'contact-form', class: 'default-form m-ajax-form'}) do |f|
                 //input name="contact-form" type="hidden"
                 p.c-alert-message.m-warning.m-validation-error style=("display: none;") 
                   i.ico.fa.fa-exclamation-circle
@@ -66,31 +66,35 @@
                 // p.c-alert-message.m-warning.m-request-error style=("display: none;") 
                 //   i.ico.fa.fa-exclamation-circle
                 //   | Gửi thất bại, vui lòng thử lại.
+                p.c-alert-message.m-warning style=("display: none;")
+                  - flash.each do |key, value|
+                    i.ico.fa.fa-exclamation-circle
+                      = value
                 .row
                   .col-sm-6
                     .form-field
                       label for="name" 
                         | Họ Tên
-                        span *  
-                      = text_field_tag :name, nil, class: "m-required"
+                        span *
+                      = f.text_field :name, class: "m-required"
                     .form-field
                       label for="email" 
                         | Email
                         span *
-                      = text_field_tag :email, nil,class: "m-required m-email"
+                      = f.text_field :email, class: "m-required m-email"
                     .form-field
                       label for="phone"
                         | Số Điện Thoại
-                      = text_field_tag :phone
+                      = f.text_field :phone
                   .col-sm-6
                     .form-field
                       label for="subject"
                         | Chủ đề
-                      = text_field_tag :subject
+                      = f.text_field :subject
                     .form-field
                       label for="message" 
                         | Nội dung
                         span *
-                      = text_area_tag :message, nil,class: "m-required"
+                      = f.text_area :message, class: "m-required"
                     .form-field
                       button.submit-btn.c-button data-label=("Gửi") data-loading-label="Đang gửi..." type="submit"  Gửi

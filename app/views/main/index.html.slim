@@ -51,7 +51,7 @@
             h2 Sản phẩm bán chạy nhất
             p.subtitle Hiệu quả nhanh chóng sau 10 ngày sử dụng
             p.more
-              a.c-button.m-type-2 href="index.php?view=dssp" Xem tất cả sản phẩm
+              = link_to 'Xem tất cả sản phẩm', all_products_path, class: 'c-button m-type-2'
         .container
           .row
             - @best_products.each do |product|

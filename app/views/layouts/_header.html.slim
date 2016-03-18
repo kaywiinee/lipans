@@ -26,7 +26,7 @@ header#header.m-animated
                     = link_to type.name, type_path(type.id)
             li
               span 
-                = link_to 'Liên hệ', contact_path
+                = link_to 'Liên hệ', contacts_path
         .header-search.sidebar-search
           .header-search-inner
             = form_tag(search_path, :method => "get", class: "search-form") do

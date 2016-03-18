@@ -33,6 +33,7 @@ gem 'html2slim'
 
 gem 'bower-rails'
 
+gem 'devise'
 
 #bootstrap
 gem 'bootstrap-sass','3.3.4.1'
