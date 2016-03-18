@@ -3,7 +3,7 @@ development:
   database: lipans_development
   host: localhost
   username: root
-  password:
+  password: 123456
   pool: 5
   timeout: 5000
   encoding: utf8

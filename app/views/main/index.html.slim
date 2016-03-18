@@ -1,3 +1,8 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "lib/owl.carousel.min"
+  = javascript_include_tag "lib/library"
+  = javascript_include_tag "lib/scripts"
+  
 #main-slider.m-has-hover-stop data-interval="4000" 
   .slide-list
     - @slide_show.each_with_index do |ss, index|

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'ket-qua-tim-kiem' => 'main#all', as: :search
   #match '/lien-he', to: 'contacts#index', via: 'get', as: :contacts
   resources "contacts", only: [:index, :create]
+  # get 'lien-he' => 'contacts#index', as: :contacts
+  # post 'gui-thanh-cong' => 'contacts#success', as: :success
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

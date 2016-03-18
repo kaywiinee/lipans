@@ -25,50 +25,23 @@
                   a.c-button.m-type-2.m-open-ajax-modal Hotline:(073) 3876 237
         section
           h2 Gửi thắc mắc
-          // .row
-          //   .col-lg-8
-          //     form#contact-form.default-form action="" method="post" 
-          //       input#date name="date" type="hidden" value=("2016-03-17 21:58:52") /
-          //       p
-          //       .row
-          //         .col-sm-6
-          //           .form-field
-          //             label for="Ten" 
-          //               | Họ Tên
-          //               span *
-          //             input#Ten.m-required name="Ten" type="text" /
-          //           .form-field
-          //             label for="Email" 
-          //               | Email
-          //               span *
-          //             input#Email.m-required.m-email name="Email" type="text" /
-          //           .form-field
-          //             label for="SDT"  Số Điện Thoại
-          //             input#SDT name="SDT" type="text" /
-          //         .col-sm-6
-          //           .form-field
-          //             label for="ChuDe"  Chủ đề
-          //             input#ChuDe name="ChuDe" type="text" /
-          //           .form-field
-          //             label for="NoiDung" 
-          //               | Nội dung
-          //               span *
-          //             textarea#NoiDung.m-required name="NoiDung" 
-          //           .form-field
-          //             button#ok.submit-btn.c-button name="ok" type="submit"  Gửi
           .row
             .col-lg-12
-              = form_for(@contact, action: :create, html: {id: 'contact-form', class: 'default-form m-ajax-form'}) do |f|
-                //input name="contact-form" type="hidden"
+              = form_for(@contact, html: {id: 'contact-form', class: 'default-form m-ajax-form'}) do |f|
                 p.c-alert-message.m-warning.m-validation-error style=("display: none;") 
                   i.ico.fa.fa-exclamation-circle
                   | Vui lòng điền vào các mục có dấu (*).
-                // p.c-alert-message.m-warning.m-request-error style=("display: none;") 
-                //   i.ico.fa.fa-exclamation-circle
-                //   | Gửi thất bại, vui lòng thử lại.
-                p.c-alert-message.m-warning style=("display: none;")
-                  - flash.each do |key, value|
-                    i.ico.fa.fa-exclamation-circle
+                p.c-alert-message.m-warning.m-request-error style=("display: none;") 
+                  i.ico.fa.fa-exclamation-circle
+                  | Gửi thất bại, vui lòng thử lại.
+                - flash.each do |key, value|
+                  - if key == 'notice'
+                    p.c-alert-message.m-success
+                      i.ico.fa.fa-exclamation-circle
+                      = value
+                  - else key == 'error'
+                    p.c-alert-message.m-warning
+                      i.ico.fa.fa-exclamation-circle
                       = value
                 .row
                   .col-sm-6

@@ -1,3 +1,16 @@
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.raise_delivery_errors = true
+ActionMailer::Base.smtp_settings = {
+   :enable_starttls_auto => true,
+   :address        => 'smtp.gmail.com',
+   :port           => 587,
+   :domain         => 'lipans.com.vn',
+   :authentication => 'plain',
+   :user_name      => 'kayltp2706@gmail.com',
+   :password       => 'kay2706<>'
+}
+ActionMailer::Base.default :from => 'kayltp2706@gmail.com'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -14,7 +27,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -26,19 +39,22 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = false
-
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { :host => 'http://lipans.com.vn' }
+  config.action_mailer.asset_host = 'http://localhost:3000'
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "lipans.com.vn",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: "kayltp2706@gmail.com",
-    password: "kay2706<>"
-  }
+
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.gmail.com",
+  #   port: 587,
+  #   domain: "lipans.com.vn",
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: "kayltp2706@gmail.com",
+  #   password: "kay2706<>"
+  # }
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
@@ -46,4 +62,4 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-end
+end   
