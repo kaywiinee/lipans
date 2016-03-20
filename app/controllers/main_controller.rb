@@ -32,6 +32,7 @@ class MainController < ApplicationController
       }
     ]
     @best_products = Product.where(is_best: true)
+    @random_products = Product.limit(4).order("RAND()")
   end
 
   def product

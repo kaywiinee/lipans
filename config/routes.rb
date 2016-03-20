@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get 'loai-san-pham/:id' => 'main#all', as: :type
   get 'loai-san-pham/:id/:page' => 'main#all', as: :type_page
   get 'ket-qua-tim-kiem' => 'main#all', as: :search
-  #match '/lien-he', to: 'contacts#index', via: 'get', as: :contacts
-  resources "contacts", only: [:index, :create]
+  match '/lien-he', to: 'contacts#index', via: 'get', as: :contacts
+  match '/lien-he', to: 'contacts#create', via: 'post', as: :contacts_post
   # get 'lien-he' => 'contacts#index', as: :contacts
   # post 'gui-thanh-cong' => 'contacts#success', as: :success
   # Example of regular route:

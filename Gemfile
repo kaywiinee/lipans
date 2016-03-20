@@ -32,7 +32,7 @@ gem 'slim-rails'
 gem 'html2slim'
 
 gem 'bower-rails'
-
+gem 'delayed_job_active_record'
 gem 'devise'
 
 #bootstrap

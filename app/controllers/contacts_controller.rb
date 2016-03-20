@@ -6,13 +6,20 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(set_params)
     unless @contact.valid?
-      flash.now[:error] = 'Gửi thất bại, vui lòng thử lại.'
+      flash.now[:error] = 'Vui lòng điền vào các mục có dấu (*)'
       render :index
       return
     end
-    UserMailer.contact_mail_user(@contact).deliver
+    data = {
+      name: @contact.name,
+      email: @contact.email,
+      phone: @contact.phone,
+      subject: @contact.subject,
+      message: @contact.message
+    }
+    UserMailer.delay.contact_mail_user(data)
     flash.now[:notice] = 'Gửi thành công! Chúng tôi sẽ sớm trả lời thư của bạn.'
-    render :index  
+    render :index
   end
 
   private

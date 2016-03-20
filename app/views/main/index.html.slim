@@ -1,8 +1,3 @@
-- content_for :javascript_includes do
-  = javascript_include_tag "lib/owl.carousel.min"
-  = javascript_include_tag "lib/library"
-  = javascript_include_tag "lib/scripts"
-  
 #main-slider.m-has-hover-stop data-interval="4000" 
   .slide-list
     - @slide_show.each_with_index do |ss, index|
@@ -42,24 +37,34 @@
       section
         header
           .container
-            h2 
-            p.subtitle 
-            p.more
-              a.c-button.m-type-2 href="index.php?view=dssp"  
-        .c-service-list.m-paginated data-items="4" data-items-desktop="4" data-items-desktop-small="3" data-items-mobile="1" data-items-tablet="2" 
-          .container
-            .service-list-inner
-              
-      section
-        header
-          .container
             h2 Sản phẩm bán chạy nhất
             p.subtitle Hiệu quả nhanh chóng sau 10 ngày sử dụng
             p.more
               = link_to 'Xem tất cả sản phẩm', all_products_path, class: 'c-button m-type-2'
+        .c-service-list.m-paginated data-items="4" data-items-desktop="4" data-items-desktop-small="3" data-items-mobile="1" data-items-tablet="2" 
+          .container
+            .service-list-inner
+              - @best_products.each do |product|
+                .service-list-item
+                  .c-service
+                    .service-image
+                      = link_to product_path(product.id)
+                        = image_tag product.image_url, alt: product.name
+                    h3.service-title
+                      = link_to product.name , product_path(product.id)
+                    .service-description
+                      = product.description.html_safe
+              
+      section
+        header
+          .container
+            h2 CÁC SẢN PHẨM KHÁC
+            p.subtitle Hơn 20 dòng sản phẩm thích hợp cho nhiều độ tuổi khác nhau
+            p.more
+              = link_to 'Xem tất cả sản phẩm', all_products_path, class: 'c-button m-type-2'
         .container
           .row
-            - @best_products.each do |product|
+            - @random_products.each do |product|
               .col-sm-3
                 article.c-article
                   .article-image

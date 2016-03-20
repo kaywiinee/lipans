@@ -13,9 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 
-//= require lib/modernizr.custom.min
 //= require lib/jquery-1.9.1.min
+//= require lib/jquery.magnific-popup.min
 //= require lib/jquery-ui-1.10.4.custom.min
 //= require lib/jquery.ba-outside-events.min
+//= require lib/owl.carousel.min
+//= require lib/modernizr.custom.min
+//= require lib/library
+//= require lib/scripts
 
 //= require module/set_active
+//= require module/refesh

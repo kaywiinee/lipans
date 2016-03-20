@@ -13,7 +13,7 @@ header#header.m-animated
             li#home
               span
                 = link_to 'Trang chủ', root_path
-            li#all-product
+            li#all-products
               span
                 = link_to 'Tất cả sản phẩm', all_products_path
             li#type.m-has-submenu
@@ -24,7 +24,7 @@ header#header.m-animated
                 - @types.each do |type|
                   li class="type-product#{type.id}"
                     = link_to type.name, type_path(type.id)
-            li
+            li#contacts
               span 
                 = link_to 'Liên hệ', contacts_path
         .header-search.sidebar-search
@@ -40,8 +40,8 @@ header#header.m-animated
       .header-panel
         button.header-panel-toggle type="button" 
           i.fa
-        .header-reservation
-          a.c-button href="#"  Mỹ phẩm Li-pans
+        .header-reservation          
+          = link_to 'Mỹ phẩm Li-pans', root_path, class: 'c-button'
         .header-contact
           ul
             li

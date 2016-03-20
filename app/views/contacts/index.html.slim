@@ -27,7 +27,7 @@
           h2 Gửi thắc mắc
           .row
             .col-lg-12
-              = form_for(@contact, html: {id: 'contact-form', class: 'default-form m-ajax-form'}) do |f|
+              = form_for(@contact, html: {id: 'contact-form', class: 'default-form'}) do |f|
                 p.c-alert-message.m-warning.m-validation-error style=("display: none;") 
                   i.ico.fa.fa-exclamation-circle
                   | Vui lòng điền vào các mục có dấu (*).
@@ -36,11 +36,11 @@
                   | Gửi thất bại, vui lòng thử lại.
                 - flash.each do |key, value|
                   - if key == 'notice'
-                    p.c-alert-message.m-success
+                    p.c-alert-message.m-success.have-flash
                       i.ico.fa.fa-exclamation-circle
                       = value
                   - else key == 'error'
-                    p.c-alert-message.m-warning
+                    p.c-alert-message.m-warning.have-flash
                       i.ico.fa.fa-exclamation-circle
                       = value
                 .row
@@ -49,25 +49,25 @@
                       label for="name" 
                         | Họ Tên
                         span *
-                      = f.text_field :name, class: "m-required"
+                      = f.text_field :name, id: "input-name", class: "m-required"
                     .form-field
                       label for="email" 
                         | Email
                         span *
-                      = f.text_field :email, class: "m-required m-email"
+                      = f.text_field :email, id: "input-email", class: "m-required m-email"
                     .form-field
                       label for="phone"
                         | Số Điện Thoại
-                      = f.text_field :phone
+                      = f.text_field :phone, id: "input-phone"
                   .col-sm-6
                     .form-field
                       label for="subject"
                         | Chủ đề
-                      = f.text_field :subject
+                      = f.text_field :subject, id: "input-subject"
                     .form-field
                       label for="message" 
                         | Nội dung
                         span *
-                      = f.text_area :message, class: "m-required"
+                      = f.text_area :message, id: "input-message", class: "m-required"
                     .form-field
                       button.submit-btn.c-button data-label=("Gửi") data-loading-label="Đang gửi..." type="submit"  Gửi
