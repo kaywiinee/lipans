@@ -31,7 +31,7 @@ header#header.m-animated
           .header-search-inner
             = form_tag(search_path, :method => "get", class: "search-form") do
               i.search-ico.fa.fa-search
-              = text_field_tag :keyword, params[:keyword], class: "search-input", placeholder: "Tên kem bạn muốn tìm"
+              = text_field_tag :keyword, params[:keyword], class: "search-input", placeholder: "Tên sản phẩm..."
               button.search-submit type="submit" 
                 i.fa.fa-angle-right
               button.search-toggle type="button"  Tìm kiếm

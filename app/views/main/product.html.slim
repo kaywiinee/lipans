@@ -12,7 +12,7 @@
               .col-sm-6
                 .product-images
                   p.main-image
-                    a.lightbox data-lightbox-group="product"
+                    a.lightbox href="#{image_path @product.image_url}" data-lightbox-group="product"
                       = image_tag @product.image_url
               .col-sm-6
                 .product-short-description.various-content

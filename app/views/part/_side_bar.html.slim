@@ -18,7 +18,7 @@ aside#sidebar
     .widget-content
       = form_tag(search_path, :method => "get", class: "c-search-form") do
         .form-fields
-          = text_field_tag :keyword, params[:keyword], class: "keyword", placeholder: "Tên kem bạn muốn tìm"
+          = text_field_tag :keyword, params[:keyword], class: "keyword", placeholder: "Tên sản phẩm..."
           button.c-button type="submit" 
             i.fa.fa-search
   .sidebar-widget.sidebar-links
