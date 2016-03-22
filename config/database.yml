@@ -1,11 +1,20 @@
-development:
+default: &default
   adapter: mysql2
-  database: lipans_development
+  database: lipans
   host: localhost
   username: root
-  password: 123456
+  password:
   pool: 5
   timeout: 5000
   encoding: utf8
   port: 3306
   collation: utf8_general_ci
+
+development:
+  <<: *default
+  database: lipans_development
+
+
+production:
+  <<: *default
+  database: lipans_production
