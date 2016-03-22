@@ -20,5 +20,6 @@ module Lipans
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.autoload_paths += Dir["#{config.root}/app/validators/"]
+    config.assets.initialize_on_precompile = false
   end
 end
