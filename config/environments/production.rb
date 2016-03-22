@@ -1,16 +1,3 @@
-ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.raise_delivery_errors = true
-ActionMailer::Base.smtp_settings = {
-   :enable_starttls_auto => true,
-   :address        => 'smtp.gmail.com',
-   :port           => 587,
-   :domain         => 'lipans.com.vn',
-   :authentication => 'plain',
-   :user_name      => 'kayltp2706@gmail.com',
-   :password       => 'kay2706<>'
-}
-ActionMailer::Base.default :from => 'kayltp2706@gmail.com'
-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -76,11 +63,6 @@ Rails.application.configure do
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
-
-  config.action_mailer.default_url_options = { :host => 'http://lipans.com.vn' }
-  config.action_mailer.asset_host = 'http://lipans.com.vn'
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
