@@ -16,7 +16,7 @@ development:
 
 
 production: 
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf-8
   pool: 5
   username: ooecqgfo_lipans
