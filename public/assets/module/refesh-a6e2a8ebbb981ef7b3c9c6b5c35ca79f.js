@@ -1,0 +1,1 @@
+(function(){$(function(){return $(".have-flash").length>0?($("#input-name").val(""),$("#input-email").val(""),$("#input-phone").val(""),$("#input-subject").val(""),$("#input-message").val("")):void 0})}).call(this);
