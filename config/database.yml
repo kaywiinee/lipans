@@ -16,11 +16,5 @@ development:
 
 
 production: 
-  adapter: mysql2
-  encoding: utf-8
-  pool: 5
-  username: ooecqgfo_lipans
-  password: kay270695
-  host: 42.112.25.67
-  port: 2222
-  database: ooecqgfo_lipans
+  <<: *default
+  database: lipans_production
