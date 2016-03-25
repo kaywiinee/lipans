@@ -4,9 +4,9 @@ lock '3.4.0'
 set :application, 'lipans'
 set :repo_url, 'git@github.com:kaywiinee/lipans.git'
 
+set :rbenv_type, :user
 set :rbenv_ruby, '2.1.0'
-set :rvm_type, :user
-set :passenger_restart_with_touch, true
+
 set :branch, :master
 
 # Default branch is :master
