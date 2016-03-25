@@ -8,7 +8,7 @@ WORKERS = 4
 worker_processes WORKERS
 working_directory CURRENT_PATH
 listen "#{DEPLOY_PATH}/shared/tmp/sockets/unicorn.sock", :backlog => 64
-#listen 80, :tcp_nopush => true
+listen 8080, :tcp_nopush => true
 timeout 60
 pid "#{DEPLOY_PATH}/shared/tmp/pids/unicorn.pid"
 
