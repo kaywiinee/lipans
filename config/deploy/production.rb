@@ -1,6 +1,6 @@
 
 set :deploy_to, "/home/ubuntu/lipans/production"
-server '54.169.230.222', user: 'ubuntu', roles: %w{web app db}, ssh_options: {port: 22, password: '123'}
+server '54.255.177.93', user: 'ubuntu', roles: %w{web app db}, ssh_options: {port: 22, password: '123'}
 
 set :rails_env, :production
 set :conditionally_migrate, true
