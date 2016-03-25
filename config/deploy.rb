@@ -11,7 +11,6 @@ set :branch, :master
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :deploy_tag, "deploy-#{Time.now.strftime('%Y%m%d-%H%M-%S')}"
 
 # Default deploy_to directory is /var/www/my_app_name
