@@ -46,6 +46,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
+set :delayed_job_server_role, :delayed_job
+
 namespace :deploy do
 
   after :restart, :clear_cache do
@@ -59,6 +61,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
+    invoke 'delayed_job:restart'
   end
 
   after :publishing, :restart

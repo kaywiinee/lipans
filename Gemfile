@@ -44,6 +44,9 @@ gem 'simple-line-icons-rails'
 # model paginator
 gem 'kaminari'
 
+# schedule
+gem 'whenever', :require => false
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
