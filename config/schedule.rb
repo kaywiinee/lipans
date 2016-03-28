@@ -20,7 +20,7 @@
 # Learn more: http://github.com/javan/whenever
 
 #delay job if dead start
-every 15.minutes do
+every 1.minutes do
   rake "delayed_job:start"
 end
 
