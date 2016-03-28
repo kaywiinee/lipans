@@ -24,7 +24,7 @@ every 15.minutes do
   rake "delayed_job:start"
 end
 
-# delayed job start on boot a
+# delayed job start on boot
 every :reboot do
   rake "delayed_job:force_start"
 end
