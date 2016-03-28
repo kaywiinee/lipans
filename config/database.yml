@@ -18,3 +18,7 @@ development:
 production: 
   <<: *default
   database: lipans_production
+
+staging: 
+  <<: *default
+  database: lipans_staging
