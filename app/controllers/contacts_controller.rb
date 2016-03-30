@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(set_params)
     unless @contact.valid?
-      flash.now[:error] = 'Vui lòng điền vào các mục có dấu (*)'
+      flash.now[:error] = 'Vui lòng điền vào các mục có dấu (*) và trả lời đúng câu hỏi bảo mật.'
       render :index
       return
     end
@@ -24,7 +24,7 @@ class ContactsController < ApplicationController
 
   private
   def set_params
-    params.require(:contact).permit(:name,:email,:phone,:subject,:message)
+    params.require(:contact).permit(:name,:email,:phone,:subject,:message,:humanizer_answer,:humanizer_question_id)
   end
 
 end

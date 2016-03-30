@@ -59,6 +59,9 @@
                       label for="phone"
                         | Số Điện Thoại
                       = f.text_field :phone, id: "input-phone"
+                    = f.label :humanizer_answer, @contact.humanizer_question
+                    = f.text_field :humanizer_answer
+                    = f.hidden_field :humanizer_question_id
                   .col-sm-6
                     .form-field
                       label for="subject"

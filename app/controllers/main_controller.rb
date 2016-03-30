@@ -46,11 +46,12 @@ class MainController < ApplicationController
     @page = params[:page].present? ? params[:page].to_i : 1
     if params[:id].present?
       @id = params[:id].to_i
-      @type = true
-      @total = (Type.find(@id).products.length.to_f/6).ceil
-      @products = Type.find(@id).products.page(@page).per(6)
+      @type = Type.find_by(id: @id)
+      @total = (@type.products.length.to_f/6).ceil
+      @products = @type.products.page(@page).per(6)
     elsif params[:keyword].present?
-      @products = Product.search(params[:keyword]).order(id: :desc)
+      @keyword = params[:keyword].to_s
+      @products = Product.search(@keyword).order(id: :desc)
       @total = 1  
     else
       @total = Product.all.length/6

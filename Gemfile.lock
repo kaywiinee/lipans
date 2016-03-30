@@ -105,6 +105,7 @@ GEM
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
+    humanizer (2.6.2)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -234,6 +235,7 @@ DEPENDENCIES
   font-awesome-rails
   font-awesome-sass
   html2slim
+  humanizer
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

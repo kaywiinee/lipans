@@ -1,0 +1,14 @@
+ul.breadcrumbs
+  li
+    = link_to 'Trang chủ', root_path
+  li
+    = link_to 'Tất cả sản phẩm', all_products_path
+  - if @keyword.present?
+    li
+      = link_to 'Kết quả tìm kiếm của ' + @keyword, root_path
+  - unless type.nil?
+    li
+      = link_to type.name, type_path(type.id)
+  - unless product.nil?
+    li
+      = link_to product.name , product_path(product.id)

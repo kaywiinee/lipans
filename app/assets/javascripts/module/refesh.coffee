@@ -5,3 +5,4 @@ $ ->
     $('#input-phone').val('')
     $('#input-subject').val('')
     $('#input-message').val('')
+    $('#contact_humanizer_answer').val('')

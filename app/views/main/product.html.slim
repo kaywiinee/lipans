@@ -3,6 +3,7 @@
     .container
       h1
         = @product.name
+      = render :partial => "part/breadcrumbs", :locals => { :type => @product.type, :product => @product}
   .container
     .row
       .col-md-8

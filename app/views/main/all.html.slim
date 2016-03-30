@@ -2,6 +2,7 @@
   #page-header
     .container
       h1 Tất cả sản phẩm
+      = render :partial => "part/breadcrumbs", :locals => { :type => @type, :product => nil }
   .container
     .row
       .col-md-8
