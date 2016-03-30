@@ -39,20 +39,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'http://lipans.com.vn' }
   config.action_mailer.asset_host = 'http://localhost:3000'
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-
-  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address: "smtp.gmail.com",
-  #   port: 587,
-  #   domain: "lipans.com.vn",
-  #   authentication: "plain",
-  #   enable_starttls_auto: true,
-  #   user_name: "kayltp2706@gmail.com",
-  #   password: "kay2706<>"
-  # }
+  
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
