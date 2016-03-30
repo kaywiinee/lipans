@@ -1,8 +1,16 @@
+<<<<<<< HEAD
+-- MySQL dump 10.13  Distrib 5.5.47, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: lipans_production
+-- ------------------------------------------------------
+-- Server version	5.5.47-0ubuntu0.14.04.1
+=======
 -- MySQL dump 10.13  Distrib 5.6.24, for osx10.8 (x86_64)
 --
 -- Host: 127.0.0.1    Database: lipans_development
 -- ------------------------------------------------------
 -- Server version	5.6.26
+>>>>>>> f665e9a834513c18d81574f3f77aa1d5e5c029fa
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,6 +24,71 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+<<<<<<< HEAD
+-- Table structure for table `contacts`
+--
+
+DROP TABLE IF EXISTS `contacts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `message` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contacts`
+--
+
+LOCK TABLES `contacts` WRITE;
+/*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `delayed_jobs`
+--
+
+DROP TABLE IF EXISTS `delayed_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `delayed_jobs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `priority` int(11) NOT NULL DEFAULT '0',
+  `attempts` int(11) NOT NULL DEFAULT '0',
+  `handler` text NOT NULL,
+  `last_error` text,
+  `run_at` datetime DEFAULT NULL,
+  `locked_at` datetime DEFAULT NULL,
+  `failed_at` datetime DEFAULT NULL,
+  `locked_by` varchar(255) DEFAULT NULL,
+  `queue` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `delayed_jobs_priority` (`priority`,`run_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `delayed_jobs`
+--
+
+LOCK TABLES `delayed_jobs` WRITE;
+/*!40000 ALTER TABLE `delayed_jobs` DISABLE KEYS */;
+INSERT INTO `delayed_jobs` VALUES (1,0,0,'--- !ruby/object:Delayed::PerformableMailer\nobject: !ruby/class \'UserMailer\'\nmethod_name: :contact_mail_user\nargs:\n- :name: fdsf\n  :email: a@a.com\n  :phone: \n  :subject: \'\'\n  :message: sfdsf\n',NULL,'2016-03-25 08:18:04',NULL,NULL,NULL,NULL,'2016-03-25 08:18:04','2016-03-25 08:18:04'),(2,0,0,'--- !ruby/object:Delayed::PerformableMailer\nobject: !ruby/class \'UserMailer\'\nmethod_name: :contact_mail_user\nargs:\n- :name: Han Phan\n  :email: kayltp2706@gmail.com\n  :phone: 987654321\n  :subject: test contact\n  :message: test contact\n',NULL,'2016-03-28 06:18:31',NULL,NULL,NULL,NULL,'2016-03-28 06:18:31','2016-03-28 06:18:31'),(3,0,0,'--- !ruby/object:Delayed::PerformableMailer\nobject: !ruby/class \'UserMailer\'\nmethod_name: :contact_mail_user\nargs:\n- :name: Han Phan\n  :email: kayltp2706@gmail.com\n  :phone: 987654321\n  :subject: test contact\n  :message: test contact\n',NULL,'2016-03-28 09:54:18',NULL,NULL,NULL,NULL,'2016-03-28 09:54:18','2016-03-28 09:54:18');
+/*!40000 ALTER TABLE `delayed_jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+=======
+>>>>>>> f665e9a834513c18d81574f3f77aa1d5e5c029fa
 -- Table structure for table `products`
 --
 
@@ -104,4 +177,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
+-- Dump completed on 2016-03-30  2:16:18
+=======
 -- Dump completed on 2016-03-17 17:23:34
+>>>>>>> f665e9a834513c18d81574f3f77aa1d5e5c029fa
