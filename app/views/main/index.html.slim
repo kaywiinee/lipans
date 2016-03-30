@@ -1,0 +1,74 @@
+#main-slider.m-has-hover-stop data-interval="4000" 
+  .slide-list
+    - @slide_show.each_with_index do |ss, index|
+      .slide.m-bg-align-right data-label=("#{ss[:slide]}") class="slide#{index+1}"
+        .slide-bg
+          .container
+            .slide-inner
+              .slide-content.various-content.textalign-left.valign-middle
+                h1
+                  = ss[:name]
+                h3
+                  = ss[:des]
+                  br
+                  = link_to ss[:content], root_path, class: 'm-open-ajax-modal'
+#core
+  #page-content
+    .various-content
+      section
+        header
+          .container
+            h2 Giới thiệu
+            p.subtitle DNTN. Đinh Thị Kim Phượng - Công Ty Mỹ Phẩm Li-Pans
+        .c-testimonial-list.m-paginated
+          .container
+            .testimonial-list-inner
+              .testimonial-list-item
+                .c-testimonial.m-has-portrait
+                  .testimonial-inner
+                    p.testimonial-portrait
+                      span
+                        = image_tag 'logo.jpg'
+                    blockquote
+                      p
+                        | Li-pans là loại mỹ phẩm dành cho da.Với những tinh chất được chiết lọc từ vật liệu thiên nhiên sẵn có ở Việt Nam, như nha đam, ngọc trai và tinh chất nghệ, và một số thảo dược khác, do đó giúp cho da có nhiều dưỡng chất, phát triển nhanh các tế bào da mới, thay thế cho tế bào da cũ,và cân bằng độ ẩm cho da, tạo làn da mịn trắng sáng, và đồng thời tẩy bỏ các tế bào chết, cho làn da trắng đều nhanh chóng.
+                        br
+                        | Với công nghệ kép, tiêu chuẩn quy trình liên kết đôi, các chất chiết xuất sẽ được hòa trộn đều với máy kỹ thuật tiên tiến, tất cả được chuyển tải thông qua máy cực tím, để hủy bỏ các vi khuẩn ăn theo trong quá trình tự nhiên, sau đó kem được đảm bảo độ đồng đều trong kem, chất chóng nắng tự nhiên không có phản ứng phụ,độ mịn và độ thấm sâu vào da rất nhanh .Do đó kem Li-Pans là sản phẩm đạt tiêu chuẩn kỹ thuật cao.Và đã được một số chuyên gia nghiên cứu về da liễu, đã kiểm qua sản phẩm đều đạt chất lượng đến 99% về độ an toàn cho da, và không phản ứng phụ, không ăn nắng .Các bạn hoàn toàn yên tâm khi sử dụng sản phẩm Li-Pans.
+      section
+        header
+          .container
+            h2 Sản phẩm bán chạy nhất
+            p.subtitle Hiệu quả nhanh chóng sau 10 ngày sử dụng
+            p.more
+              = link_to 'Xem tất cả sản phẩm', all_products_path, class: 'c-button m-type-2'
+        .c-service-list.m-paginated data-items="4" data-items-desktop="4" data-items-desktop-small="3" data-items-mobile="1" data-items-tablet="2" 
+          .container
+            .service-list-inner
+              - @best_products.each do |product|
+                .service-list-item
+                  .c-service
+                    .service-image
+                      = link_to product_path(product.id)
+                        = image_tag product.image_url, alt: product.name
+                    h3.service-title
+                      = link_to product.name , product_path(product.id)
+                    .service-description
+                      = product.description.html_safe
+              
+      section
+        header
+          .container
+            h2 CÁC SẢN PHẨM KHÁC
+            p.subtitle Hơn 20 dòng sản phẩm thích hợp cho nhiều độ tuổi khác nhau
+            p.more
+              = link_to 'Xem tất cả sản phẩm', all_products_path, class: 'c-button m-type-2'
+        .container
+          .row
+            - @random_products.each do |product|
+              .col-sm-3
+                article.c-article
+                  .article-image
+                    = link_to product_path(product.id)
+                      = image_tag product.image_url, alt: product.name
+                  h3.article-title
+                    = link_to product.name , product_path(product.id)

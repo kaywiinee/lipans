@@ -1,0 +1,31 @@
+aside#sidebar
+  .sidebar-widget.sidebar-cart
+    h3.widget-title Bán chạy nhất
+    .widget-content
+      ul.cart-product-list
+        - @best_products.each do |product|
+          li
+            .cart-product
+              p.product-image
+                = link_to product_path(product.id)
+                  = image_tag product.image_url, alt: product.name
+              h4.product-title
+                = link_to product.name , product_path(product.id)
+              p.product-price
+                | #{product.price}.000VND
+  .sidebar-widget.sidebar-search
+    h3.widget-title Tìm kiếm
+    .widget-content
+      = form_tag(search_path, :method => "get", class: "c-search-form") do
+        .form-fields
+          = text_field_tag :keyword, params[:keyword], class: "keyword", placeholder: "Tên sản phẩm..."
+          button.c-button type="submit" 
+            i.fa.fa-search
+  .sidebar-widget.sidebar-links
+    h3.widget-title Theo loại
+    .widget-content
+      ul
+        - @types = Type.all
+        - @types.each do |type|
+          li class="type-product#{type.id}"
+            = link_to type.name, type_path(type.id)

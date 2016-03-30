@@ -1,0 +1,79 @@
+header#header.m-animated
+  .header-bg
+    .header-inner
+      .header-branding
+        = link_to root_path
+          = image_tag 'logo_header.png', width: 291
+      .header-navigation
+        nav.header-menu
+          button.header-menu-toggle type="button" 
+            i.fa.fa-bars
+            | MENU
+          ul
+            li#home
+              span
+                = link_to 'Trang chủ', root_path
+            li#all-products
+              span
+                = link_to 'Tất cả sản phẩm', all_products_path
+            li#type.m-has-submenu
+              span
+                = link_to 'Theo loại', all_products_path
+              ul.sub-menu
+                - @types = Type.all
+                - @types.each do |type|
+                  li class="type-product#{type.id}"
+                    = link_to type.name, type_path(type.id)
+            li#contacts
+              span 
+                = link_to 'Liên hệ', contacts_path
+        .header-search.sidebar-search
+          .header-search-inner
+            = form_tag(search_path, :method => "get", class: "search-form") do
+              i.search-ico.fa.fa-search
+              = text_field_tag :keyword, params[:keyword], class: "search-input", placeholder: "Tên sản phẩm..."
+              button.search-submit type="submit" 
+                i.fa.fa-angle-right
+              button.search-toggle type="button"  Tìm kiếm
+          button.search-toggle-mobile type="button" 
+            i.fa
+      .header-panel
+        button.header-panel-toggle type="button" 
+          i.fa
+        .header-reservation          
+          = link_to 'Mỹ phẩm Li-pans', root_path, class: 'c-button'
+        .header-contact
+          ul
+            li
+              .item-inner
+                i.ico.fa.fa-phone
+                strong (073) 3876 237
+            li
+              .item-inner
+                i.ico.fa.fa-envelope-o
+                a href="#"  kimphuong43@gmail.com
+            li
+              .item-inner
+                i.ico.fa.fa-map-marker
+                strong DNTN. ĐINH THỊ KIM PHƯỢNG
+                br
+                | 13/13B Nguyễn Thị Thập, F.6
+                br
+                | Tp. Mỹ Tho, T. Tiền Giang
+            li
+              .item-inner
+                i.ico.fa.fa-clock-o
+                dl
+                  dt Hotline:
+                  dd 098 7225 372
+        .header-social
+          ul
+            li
+              a href="#" title="Twitter" 
+                i.fa.fa-twitter
+            li
+              a href="#" title="Facebook" 
+                i.fa.fa-facebook
+            li
+              a href="#" title="Pinterest" 
+                i.fa.fa-pinterest
