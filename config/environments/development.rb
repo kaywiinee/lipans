@@ -1,11 +1,10 @@
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.raise_delivery_errors = true
 ActionMailer::Base.smtp_settings = {
-   :enable_starttls_auto => true,
    :address        => 'smtp.gmail.com',
    :port           => 587,
    :domain         => 'lipans.com.vn',
-   :authentication => 'plain',
+   :authentication => 'login',
    :user_name      => 'kayltp2706@gmail.com',
    :password       => 'kay2706<>'
 }
@@ -36,10 +35,9 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = false
-  config.action_mailer.default_url_options = { :host => 'http://lipans.com.vn' }
+  config.action_mailer.default_url_options = { :host => 'lipans.com.vn' }
   config.action_mailer.asset_host = 'http://localhost:3000'
   config.action_mailer.perform_deliveries = true
-  
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
