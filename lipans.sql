@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 -- MySQL dump 10.13  Distrib 5.5.47, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: lipans_production
 -- ------------------------------------------------------
 -- Server version	5.5.47-0ubuntu0.14.04.1
+=======
+-- MySQL dump 10.13  Distrib 5.6.24, for osx10.8 (x86_64)
+--
+-- Host: 127.0.0.1    Database: lipans_development
+-- ------------------------------------------------------
+-- Server version	5.6.26
+>>>>>>> f665e9a834513c18d81574f3f77aa1d5e5c029fa
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,6 +24,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+<<<<<<< HEAD
 -- Table structure for table `contacts`
 --
 
@@ -78,6 +87,8 @@ INSERT INTO `delayed_jobs` VALUES (1,0,0,'--- !ruby/object:Delayed::PerformableM
 UNLOCK TABLES;
 
 --
+=======
+>>>>>>> f665e9a834513c18d81574f3f77aa1d5e5c029fa
 -- Table structure for table `products`
 --
 
@@ -166,4 +177,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2016-03-30  2:16:18
+=======
+-- Dump completed on 2016-03-17 17:23:34
+>>>>>>> f665e9a834513c18d81574f3f77aa1d5e5c029fa
