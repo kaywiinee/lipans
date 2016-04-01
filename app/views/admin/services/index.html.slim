@@ -20,6 +20,9 @@
               button.btn.btn-default title="Tạo mới" type="button" ng-click="addNewService()"
                 svg.glyph.stroked.pencil style="height: 16px;width: 16px; margin: 0; stroke-width: 3px;"
                   use xlink:href="#stroked-pencil"
+              button.btn.btn-default title="Xóa" type="button" ng-click="deleteService()"
+                svg.glyph.stroked.cancel style="height: 16px;width: 16px; margin: 0; stroke-width: 3px;"
+                  use xlink:href="#stroked-cancel"
             .pull-right.search
               input.form-control placeholder="Search" type="text" /
           .fixed-table-container
@@ -55,7 +58,7 @@
                 tbody
                   tr ng-repeat="service in services"
                     td.bs-checkbox
-                      input name="toolbar1" type="checkbox" /
+                      input class="service_id" type="checkbox" value="{{service.id}}"
                     td 
                       | {{service.id}}
                     td 
@@ -64,18 +67,18 @@
                       | {{service.description}}
                     td 
                       | {{service.price}}.000
-            .fixed-table-pagination ng-show="totalPages.length > 1"
+            .fixed-table-pagination ng-show="total > 1"
               .pull-right.pagination
                 ul.pagination
-                  li.page-first.disabled
+                  li.page-first ng-class="{'disabled': page==1}"
                     a ng-click="setPage(1)" &lt;&lt;
-                  li.page-pre.disabled
+                  li.page-pre ng-class="{'disabled': page==1}"
                     a ng-click="setPage(page-1)"  &lt;
                   li.page-number ng-repeat="p in totalPages" ng-class="{'active disabled': page==p}"
                     a ng-click="setPage(p)"
                       | {{p}}
-                  li.page-next
+                  li.page-next ng-class="{'disabled': page==total}"
                     a ng-click="setPage(page+1)"  &gt;
-                  li.page-last
+                  li.page-last ng-class="{'disabled': page==total}"
                     a ng-click="setPage(totalPages)"  &gt;&gt;
         .clearfix

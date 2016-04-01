@@ -3,9 +3,11 @@ window.Lipans.Service.factory 'ServicesApi', ($http) ->
   factory_api_ctrl = {}
 
   # define api in this list
-  arrAPICtrl = {
+  arrAPICtrl =
     api1: 'get'
-  }
+    api2: 'get'
+    api3: 'post'
+    api4: 'post'
 
   $.each arrAPICtrl, (key, method) ->
     factory_api_ctrl[key] = (params) ->

@@ -1,32 +1,54 @@
-window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,templateHelper,$modal) ->
+window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,templateHelper, Modal) ->
   'use strict'
 
   $scope.page = 1
 
   $scope.init = ()->
-    ServicesApi.api1().then (rs)->
+    $scope.load()
+
+  $scope.load = ()->
+    ServicesApi.api1({page: $scope.page}).then (rs)->
       if rs.status == 1
         $scope.services = rs.data.services
-        $scope.totalPages = [1..rs.data.total]
+        $scope.total = rs.data.total
+        $scope.totalPages = [1..$scope.total]
+        $scope.is_full = rs.data.is_full
       else
         alert rs.message
 
   $scope.setPage = (page)->
     $scope.page = page
-    ServicesApi.api1({page: page}).then (rs)->
-      if rs.status == 1
-        $scope.services = rs.data.services
-        $scope.totalPages = rs.data.total
-      else
-        alert rs.message
+    $scope.load()
 
   $scope.addNewService = ()->
-    modalInstance = $modal.open(
-      templateUrl: templateHelper.get 'add_new_service'
-      windowClass: 'modal-add-new-service'
-      keyboard: false
-      backdropClick: false
-      backdrop: 'static'
-      controller: ($scope)->
-        console.log 'a'
+    Modal.action('add_new_service','modal-add-new-service', ($scope,modalInstance)->
+      ServicesApi.api2().then (rs)->
+          if rs.status == 1
+            $scope.types = rs.data
+          else
+            alert rs.message
+
+        $scope.create = (service)->
+          ServicesApi.api3(service).then (rs)->
+            if rs.status == 1
+              modalInstance.dismiss('cancel')
+            else
+              $scope.error = rs.status
+    , ()->
+      if $scope.is_full == 1
+        $scope.page += 1
+      $scope.load()
     )
+    return 
+
+  $scope.deleteService = ()->
+    servicesId = []
+    angular.forEach($element.find('.service_id:checked'), (e)->
+      servicesId.push(e.value)
+    )
+    ServicesApi.api4({services_id: servicesId}).then (rs)->
+      if rs.status == 1
+        $scope.load()
+      else
+        alert rs.message
+    return

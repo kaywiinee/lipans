@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'main#index'
   resources :tpl, :only => [:index]
-  
+
   get 'san-pham/:id' => 'main#product', as: :product
   get 'tat-ca-san-pham' => 'main#all', as: :all_products
   get 'tat-ca-san-pham/:page' => 'main#all', as: :all_products_page
@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   namespace :api do
     scope :v1, module: 'v1', as: 'v1' do
       get 'api1'
+      get 'api2'
+      post 'api3'
+      post 'api4'
     end
   end
   # get 'lien-he' => 'contacts#index', as: :contacts

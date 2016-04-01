@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331062032) do
+ActiveRecord::Schema.define(version: 20160401073311) do
 
   create_table "contacts", force: true do |t|
     t.string  "name"
@@ -52,19 +52,23 @@ ActiveRecord::Schema.define(version: 20160331062032) do
 
   create_table "services", force: true do |t|
     t.string   "name"
-    t.integer  "type_id"
     t.text     "description"
     t.integer  "price"
+    t.boolean  "is_displayed", default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "services", ["type_id"], name: "index_services_on_type_id", using: :btree
+  create_table "type_services", force: true do |t|
+    t.integer "type_id"
+    t.integer "service_id"
+  end
 
   create_table "types", force: true do |t|
-    t.string "name"
-    t.string "kind"
-    t.string "image_url"
+    t.string  "name"
+    t.string  "kind"
+    t.string  "image_url"
+    t.boolean "is_displayed"
   end
 
 end
