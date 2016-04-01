@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'main#index'
-
+  resources :tpl, :only => [:index]
+  
   get 'san-pham/:id' => 'main#product', as: :product
   get 'tat-ca-san-pham' => 'main#all', as: :all_products
   get 'tat-ca-san-pham/:page' => 'main#all', as: :all_products_page
@@ -13,6 +14,24 @@ Rails.application.routes.draw do
   get 'ket-qua-tim-kiem' => 'main#all', as: :search
   match '/lien-he', to: 'contacts#index', via: 'get', as: :contacts
   match '/lien-he', to: 'contacts#create', via: 'post', as: :contacts_post
+
+  ################
+  #     ADMIN
+  ################
+  namespace :admin do
+    root to: 'page#index', via: :get
+    resources :services
+  end
+
+  ################
+  #     API
+  ################
+
+  namespace :api do
+    scope :v1, module: 'v1', as: 'v1' do
+      get 'api1'
+    end
+  end
   # get 'lien-he' => 'contacts#index', as: :contacts
   # post 'gui-thanh-cong' => 'contacts#success', as: :success
   # Example of regular route:

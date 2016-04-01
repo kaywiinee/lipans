@@ -24,3 +24,5 @@
 
 //= require module/set_active
 //= require module/refesh
+
+//= require_tree ./admin

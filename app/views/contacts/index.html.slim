@@ -1,76 +1,79 @@
-#core
-  #page-header
+= render 'layouts/header'
+#wrapper
+  #core
+    #page-header
+      .container
+        h1 Liên hệ
     .container
-      h1 Liên hệ
-  .container
-    #page-content
-      .various-content
-        section
-          .col-lg-6
-            .c-icon-block
-              i.ico.fa.fa-map-marker
-              .icon-block-inner
-                p
-                  strong Mỹ phẩm Li-pans
-                  br/
-                  | 13/13B Nguyễn Thị Thập, F.6
-                  br/
-                  | Tp. Mỹ Tho, T. Tiền Giang
-          .col-lg-6
-            .c-icon-block
-              i.ico.fa.fa-info-circle
-              .icon-block-inner
-                p Hãy gửi email hoặc gọi điện thoại trực tiếp cho Li-pans để được tư vấn miễn phí và liên hệ đặt hàng.
-                p
-                  a.c-button.m-type-2.m-open-ajax-modal Hotline:(073) 3876 237
-        section
-          h2 Gửi thắc mắc
-          .row
-            .col-lg-12
-              = form_for(@contact, html: {id: 'contact-form', class: 'default-form'}) do |f|
-                p.c-alert-message.m-warning.m-validation-error style=("display: none;") 
-                  i.ico.fa.fa-exclamation-circle
-                  | Vui lòng điền vào các mục có dấu (*).
-                p.c-alert-message.m-warning.m-request-error style=("display: none;") 
-                  i.ico.fa.fa-exclamation-circle
-                  | Gửi thất bại, vui lòng thử lại.
-                - flash.each do |key, value|
-                  - if key == 'notice'
-                    p.c-alert-message.m-success.have-flash
-                      i.ico.fa.fa-exclamation-circle
-                      = value
-                  - else key == 'error'
-                    p.c-alert-message.m-warning.have-flash
-                      i.ico.fa.fa-exclamation-circle
-                      = value
-                .row
-                  .col-sm-6
-                    .form-field
-                      label for="name" 
-                        | Họ Tên
-                        span *
-                      = f.text_field :name, id: "input-name", class: "m-required"
-                    .form-field
-                      label for="email" 
-                        | Email
-                        span *
-                      = f.text_field :email, id: "input-email", class: "m-required m-email"
-                    .form-field
-                      label for="phone"
-                        | Số Điện Thoại
-                      = f.text_field :phone, id: "input-phone"
-                    = f.label :humanizer_answer, @contact.humanizer_question
-                    = f.text_field :humanizer_answer
-                    = f.hidden_field :humanizer_question_id
-                  .col-sm-6
-                    .form-field
-                      label for="subject"
-                        | Chủ đề
-                      = f.text_field :subject, id: "input-subject"
-                    .form-field
-                      label for="message" 
-                        | Nội dung
-                        span *
-                      = f.text_area :message, id: "input-message", class: "m-required"
-                    .form-field
-                      button.submit-btn.c-button data-label=("Gửi") data-loading-label="Đang gửi..." type="submit"  Gửi
+      #page-content
+        .various-content
+          section
+            .col-lg-6
+              .c-icon-block
+                i.ico.fa.fa-map-marker
+                .icon-block-inner
+                  p
+                    strong Mỹ phẩm Li-pans
+                    br/
+                    | 13/13B Nguyễn Thị Thập, F.6
+                    br/
+                    | Tp. Mỹ Tho, T. Tiền Giang
+            .col-lg-6
+              .c-icon-block
+                i.ico.fa.fa-info-circle
+                .icon-block-inner
+                  p Hãy gửi email hoặc gọi điện thoại trực tiếp cho Li-pans để được tư vấn miễn phí và liên hệ đặt hàng.
+                  p
+                    a.c-button.m-type-2.m-open-ajax-modal Hotline:(073) 3876 237
+          section
+            h2 Gửi thắc mắc
+            .row
+              .col-lg-12
+                = form_for(@contact, html: {id: 'contact-form', class: 'default-form'}) do |f|
+                  p.c-alert-message.m-warning.m-validation-error style=("display: none;") 
+                    i.ico.fa.fa-exclamation-circle
+                    | Vui lòng điền vào các mục có dấu (*).
+                  p.c-alert-message.m-warning.m-request-error style=("display: none;") 
+                    i.ico.fa.fa-exclamation-circle
+                    | Gửi thất bại, vui lòng thử lại.
+                  - flash.each do |key, value|
+                    - if key == 'notice'
+                      p.c-alert-message.m-success.have-flash
+                        i.ico.fa.fa-exclamation-circle
+                        = value
+                    - else key == 'error'
+                      p.c-alert-message.m-warning.have-flash
+                        i.ico.fa.fa-exclamation-circle
+                        = value
+                  .row
+                    .col-sm-6
+                      .form-field
+                        label for="name" 
+                          | Họ Tên
+                          span *
+                        = f.text_field :name, id: "input-name", class: "m-required"
+                      .form-field
+                        label for="email" 
+                          | Email
+                          span *
+                        = f.text_field :email, id: "input-email", class: "m-required m-email"
+                      .form-field
+                        label for="phone"
+                          | Số Điện Thoại
+                        = f.text_field :phone, id: "input-phone"
+                      = f.label :humanizer_answer, @contact.humanizer_question
+                      = f.text_field :humanizer_answer
+                      = f.hidden_field :humanizer_question_id
+                    .col-sm-6
+                      .form-field
+                        label for="subject"
+                          | Chủ đề
+                        = f.text_field :subject, id: "input-subject"
+                      .form-field
+                        label for="message" 
+                          | Nội dung
+                          span *
+                        = f.text_area :message, id: "input-message", class: "m-required"
+                      .form-field
+                        button.submit-btn.c-button data-label=("Gửi") data-loading-label="Đang gửi..." type="submit"  Gửi
+  = render 'layouts/footer'

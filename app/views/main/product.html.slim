@@ -1,78 +1,81 @@
-#core.core-bg-2
-  #page-header
+= render 'layouts/header'
+#wrapper
+  #core.core-bg-2
+    #page-header
+      .container
+        h1
+          = @product.name
+        = render :partial => "part/breadcrumbs", :locals => { :type => @product.type, :product => @product}
     .container
-      h1
-        = @product.name
-      = render :partial => "part/breadcrumbs", :locals => { :type => @product.type, :product => @product}
-  .container
-    .row
-      .col-md-8
-        #page-content
-          .product-detail
-            .row
-              .col-sm-6
-                .product-images
-                  p.main-image
-                    a.lightbox href="#{image_path @product.image_url}" data-lightbox-group="product"
-                      = image_tag @product.image_url
-              .col-sm-6
-                .product-short-description.various-content
-                  p
-                    strong Công dụng:
-                    = @product.description.html_safe
-                .product-info
-                  .product-status.m-available
-                    .product-status-inner
-                      i.ico.fa.fa-check
-                      h5 Giá:
-                  .product-price
-                    strong.price
-                      | #{@product.price}.000VND
-            #product-tabs.c-tabs.product-tabs
-              ul.tab-list
-                li.m-active Mô tả sản phẩm
-                li.product-reviews-tab Sản phẩm liên quan
-              ul.content-list
-                li
-                  .product-description.various-content
-                    strong Công dụng:
-                    p
-                      = @product.description.html_safe
-                    strong Cách sử dụng:
-                    p
-                      = @product.use.html_safe
-                    strong Lưu ý:
-                    p
-                      = @product.note.html_safe
-                li style=("display: none;")
-                  .product-reviews
-                    ul#product-reviews.review-list
-                      - @similar_products.each do |product|
-                        li
-                          .review
-                            p.review-portrait
-                              = link_to product_path(product.id)
-                                = image_tag product.image_url, alt: product.name , width: 291
-                            h4.review-author
-                              = link_to product.name , product_path(product.id)
-                            .review-content.various-content
-                              p
-                                = product.description.html_safe
-                            .review-info
-                              .review-money
-                                | #{product.price}.000VND
-            .related-products
-              h2.heading-2 Dùng thử
+      .row
+        .col-md-8
+          #page-content
+            .product-detail
               .row
-                - @random_products.each do |product|
-                  .col-sm-4
-                    .product
-                      p.product-image
-                        = link_to product_path(product.id)
-                          = image_tag product.image_url, alt: product.name
-                      h4.product-title
-                        = link_to product.name , product_path(product.id)
-                      p.product-price
-                        | #{product.price}.000VND
-      .col-md-4
-        = render 'part/side_bar'
+                .col-sm-6
+                  .product-images
+                    p.main-image
+                      a.lightbox href="#{image_path @product.image_url}" data-lightbox-group="product"
+                        = image_tag @product.image_url
+                .col-sm-6
+                  .product-short-description.various-content
+                    p
+                      strong Công dụng:
+                      = @product.description.html_safe
+                  .product-info
+                    .product-status.m-available
+                      .product-status-inner
+                        i.ico.fa.fa-check
+                        h5 Giá:
+                    .product-price
+                      strong.price
+                        | #{@product.price}.000VND
+              #product-tabs.c-tabs.product-tabs
+                ul.tab-list
+                  li.m-active Mô tả sản phẩm
+                  li.product-reviews-tab Sản phẩm liên quan
+                ul.content-list
+                  li
+                    .product-description.various-content
+                      strong Công dụng:
+                      p
+                        = @product.description.html_safe
+                      strong Cách sử dụng:
+                      p
+                        = @product.use.html_safe
+                      strong Lưu ý:
+                      p
+                        = @product.note.html_safe
+                  li style=("display: none;")
+                    .product-reviews
+                      ul#product-reviews.review-list
+                        - @similar_products.each do |product|
+                          li
+                            .review
+                              p.review-portrait
+                                = link_to product_path(product.id)
+                                  = image_tag product.image_url, alt: product.name , width: 291
+                              h4.review-author
+                                = link_to product.name , product_path(product.id)
+                              .review-content.various-content
+                                p
+                                  = product.description.html_safe
+                              .review-info
+                                .review-money
+                                  | #{product.price}.000VND
+              .related-products
+                h2.heading-2 Dùng thử
+                .row
+                  - @random_products.each do |product|
+                    .col-sm-4
+                      .product
+                        p.product-image
+                          = link_to product_path(product.id)
+                            = image_tag product.image_url, alt: product.name
+                        h4.product-title
+                          = link_to product.name , product_path(product.id)
+                        p.product-price
+                          | #{product.price}.000VND
+        .col-md-4
+          = render 'part/side_bar'
+  = render 'layouts/footer'

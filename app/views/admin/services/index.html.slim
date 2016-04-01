@@ -1,0 +1,81 @@
+= render 'admin/part/menu'
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main ng-controller="ServicesCtrl" ng-init="init()"
+  .row
+    ol.breadcrumb
+      li
+        a href="#" 
+          svg.glyph.stroked.home
+            use xlink:href="#stroked-home" 
+      li.active Icons
+  .row
+    .col-lg-12
+      h1.page-header Tables
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading Advanced Table
+      .panel-body
+        .bootstrap-table
+          .fixed-table-toolbar
+            .columns.btn-group.pull-right
+              button.btn.btn-default title="Tạo mới" type="button" ng-click="addNewService()"
+                svg.glyph.stroked.pencil style="height: 16px;width: 16px; margin: 0; stroke-width: 3px;"
+                  use xlink:href="#stroked-pencil"
+            .pull-right.search
+              input.form-control placeholder="Search" type="text" /
+          .fixed-table-container
+            .fixed-table-header
+              table
+            .fixed-table-body
+              .fixed-table-loading style=("top: 37px; display: none;")  Loading, please wait…
+              table.table.table-hover
+                thead
+                  tr
+                    th.bs-checkbox style=("width: 36px; ") 
+                      .th-inner
+                        input name="btSelectAll" type="checkbox" /
+                      .fht-cell
+                    th
+                      .th-inner.sortable
+                        | ID
+                      .fht-cell
+                    th
+                      .th-inner.sortable 
+                        | Tên
+                        span.order
+                          span.caret style=("margin: 10px 5px;") 
+                      .fht-cell
+                    th
+                      .th-inner.sortable 
+                        | Mô tả
+                      .fht-cell
+                    th
+                      .th-inner.sortable 
+                        | Gía
+                      .fht-cell
+                tbody
+                  tr ng-repeat="service in services"
+                    td.bs-checkbox
+                      input name="toolbar1" type="checkbox" /
+                    td 
+                      | {{service.id}}
+                    td 
+                      | {{service.name}}
+                    td 
+                      | {{service.description}}
+                    td 
+                      | {{service.price}}.000
+            .fixed-table-pagination ng-show="totalPages.length > 1"
+              .pull-right.pagination
+                ul.pagination
+                  li.page-first.disabled
+                    a ng-click="setPage(1)" &lt;&lt;
+                  li.page-pre.disabled
+                    a ng-click="setPage(page-1)"  &lt;
+                  li.page-number ng-repeat="p in totalPages" ng-class="{'active disabled': page==p}"
+                    a ng-click="setPage(p)"
+                      | {{p}}
+                  li.page-next
+                    a ng-click="setPage(page+1)"  &gt;
+                  li.page-last
+                    a ng-click="setPage(totalPages)"  &gt;&gt;
+        .clearfix
