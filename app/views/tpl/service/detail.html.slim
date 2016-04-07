@@ -2,7 +2,7 @@
   .row
     .col-lg-12
       .panel.panel-default
-        .panel-heading Thêm dịch vụ mới
+        .panel-heading Chi tiết dịch vụ
         .panel-body
           .col-md-6
             form role="form" 
@@ -12,7 +12,7 @@
               .form-group ng-class="{'has-error': error==4}"
                 label Giá
                 input.form-control type="number" placeholder="Chỉ nhập số" ng-model="service.price"
-              .form-group ng-init="service.is_displayed=1"
+              .form-group ng-init="service.is_displayed" ng-class="{'has-error': error==6}"
                 label Ẩn hiện
                 .radio
                   label
@@ -22,14 +22,14 @@
                   label
                     input type="radio" value="0" ng-model="service.is_displayed"
                     | Ẩn
-              .form-group ng-class="{'has-error': error==6}"
+              .form-group ng-class="{'has-error': error==7}"
                 label Multiple Selects
-                select.form-control multiple="" ng-model="service.types"
-                  option value="{{type.id}}" ng-repeat="type in types"
+                select.form-control multiple="" ng-model="service.types_id"
+                  option value="{{type.id}}" ng-repeat="type in types" ng-selected="{{service.types.ids.indexOf(type.id) == 0}}"
                     | {{type.name}}
           .col-md-6
             .form-group ng-class="{'has-error': error==5}"
               label Mô tả
               textarea.form-control rows="13" ng-model="service.description"
-            button.btn.btn-primary ng-click="create(service)" type="submit" Tạo
-            button.btn.btn-default type="reset"  Thiệt lập lại
+            button.btn.btn-primary ng-click="create(service)" type="submit" Submit
+            button.btn.btn-default type="reset" ng-click="reset()" Reset

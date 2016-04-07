@@ -1,0 +1,28 @@
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading Chi tiết dịch vụ
+        .panel-body
+          .col-md-6
+            form role="form" 
+              .form-group ng-class="{'has-error': error==3}"
+                label Tên
+                input.form-control placeholder="Tên" ng-model="type.name"
+              .form-group ng-init="type.is_displayed" ng-class="{'has-error': error==4}"
+                label Ẩn hiện
+                .radio
+                  label
+                    input type="radio" value="1" ng-model="type.is_displayed"
+                    | Hiện
+                .radio
+                  label
+                    input type="radio" value="0" ng-model="type.is_displayed"
+                    | Ẩn
+          .col-md-6
+            .form-group ng-class="{'has-error': error==5}"
+              label Hình
+              input type="file" capture="camera" accept="image/*" post-image="onPostImage($files)"
+              img ng-src="{{type.image}}" style="margin-top: 10px"
+            button.btn.btn-primary ng-click="create(type)" type="submit" Submit
+            button.btn.btn-default type="button" ng-click="reset()" Reset

@@ -6,7 +6,12 @@ class Api::V1Controller < ApiController
     limit = params[:limit].to_i.abs > 0 ? params[:limit].to_i.abs : 10
     page = params[:page].to_i.abs > 0 ? params[:page].to_i.abs : 1
     
-    services = Service.page(page).per(limit)
+    services = []
+    Service.page(page).per(limit).each do |service|
+      service_json = service.as_json
+      service_json['types'] = service.all_types
+      services << service_json
+    end
     is_full = services.length%10 == 0 ? 1 : 0
     total = (Service.all.length.to_f/limit).ceil
     render_success ({services: services, total: total, is_full: is_full})
@@ -14,7 +19,8 @@ class Api::V1Controller < ApiController
 
   # get list types
   def api2
-    types = Type.kind('service').displayed
+    types = Type.kind('service')
+    types = types.displayed if params[:all].nil?
     render_success(types)
   end
 
@@ -24,12 +30,17 @@ class Api::V1Controller < ApiController
     render_failed(3,'Chưa nhập tên') and return if params[:name].nil?
     render_failed(4,'Chưa nhập giá') and return if params[:price].nil?
     render_failed(5,'Chưa nhập mô tả') and return if params[:description].nil?
-    render_failed(6,'Chưa chọn loại dịch vụ') and return if params[:types].nil? || params[:types].blank?
+    render_failed(6,'Chưa chọn ẩn hiện') and return if params[:is_displayed].nil?
+    render_failed(7,'Chưa chọn loại dịch vụ') and return if params[:types_id].nil? || params[:types_id].blank?
+
     service_params = params.permit(:name, :price, :description, :is_displayed)
-    service = Service.new()
+    service = params[:id].present? ? Service.find_by_id(params[:id]) : Service.new()
     service.attributes = service_params
-    params[:types].each {|type_id| service.type_services.build(type_id: type_id)}
+
+    service.type_services.delete_all if service.type_services.present?
+    params[:types_id].each {|type_id| service.type_services.build(type_id: type_id)}
     service.save! unless service.invalid?
+
     render_success({})
   end
 

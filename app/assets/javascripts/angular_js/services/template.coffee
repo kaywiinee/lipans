@@ -3,7 +3,8 @@ window.Lipans.Service.factory 'templateHelper', ($templateCache) ->
 
   # define template using
   arrTemplate = {
-    add_new_service: 'service/new'
+    service_detail: 'service/detail',
+    service_type: 'service/type'
   }
   $.each arrTemplate, (key,url) ->
     $templateCache.put key,path + url

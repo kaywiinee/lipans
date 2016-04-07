@@ -12,7 +12,7 @@
       h1.page-header Tables
   .col-lg-12
     .panel.panel-default
-      .panel-heading Advanced Table
+      .panel-heading Dịch vụ
       .panel-body
         .bootstrap-table
           .fixed-table-toolbar
@@ -55,8 +55,16 @@
                       .th-inner.sortable 
                         | Gía
                       .fht-cell
+                    th
+                      .th-inner.sortable 
+                        | Loại
+                      .fht-cell
+                    th
+                      .th-inner.sortable 
+                        | Ản hiện
+                      .fht-cell
                 tbody
-                  tr ng-repeat="service in services"
+                  tr ng-repeat="service in services" ng-click="editService(service)"
                     td.bs-checkbox
                       input class="service_id" type="checkbox" value="{{service.id}}"
                     td 
@@ -67,6 +75,9 @@
                       | {{service.description}}
                     td 
                       | {{service.price}}.000
+                    td
+                      | {{service.types.names}}
+                    td ng-bind="service.is_displayed == 1 ? 'Hiện' : 'Ẩn'"
             .fixed-table-pagination ng-show="total > 1"
               .pull-right.pagination
                 ul.pagination
@@ -81,4 +92,61 @@
                     a ng-click="setPage(page+1)"  &gt;
                   li.page-last ng-class="{'disabled': page==total}"
                     a ng-click="setPage(totalPages)"  &gt;&gt;
+        .clearfix
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading Loại dịch vụ
+      .panel-body
+        .bootstrap-table
+          .fixed-table-toolbar
+            .columns.btn-group.pull-right
+              button.btn.btn-default title="Tạo mới" type="button" ng-click="addNewType()"
+                svg.glyph.stroked.pencil style="height: 16px;width: 16px; margin: 0; stroke-width: 3px;"
+                  use xlink:href="#stroked-pencil"
+              button.btn.btn-default title="Xóa" type="button" ng-click="deleteService()"
+                svg.glyph.stroked.cancel style="height: 16px;width: 16px; margin: 0; stroke-width: 3px;"
+                  use xlink:href="#stroked-cancel"
+            .pull-right.search
+              input.form-control placeholder="Search" type="text" /
+          .fixed-table-container
+            .fixed-table-header
+              table
+            .fixed-table-body
+              .fixed-table-loading style=("top: 37px; display: none;")  Loading, please wait…
+              table.table.table-hover
+                thead
+                  tr
+                    th.bs-checkbox style=("width: 36px; ") 
+                      .th-inner
+                        input name="btSelectAll" type="checkbox" /
+                      .fht-cell
+                    th
+                      .th-inner.sortable
+                        | ID
+                      .fht-cell
+                    th
+                      .th-inner.sortable 
+                        | Hình
+                        span.order
+                          span.caret style=("margin: 10px 5px;") 
+                      .fht-cell
+                    th
+                      .th-inner.sortable 
+                        | Tên
+                      .fht-cell
+                    th
+                      .th-inner.sortable 
+                        | Ẩn hiện
+                      .fht-cell
+                tbody
+                  tr ng-repeat="type in list_types"
+                    td.bs-checkbox
+                      input class="type_id" type="checkbox" value="{{type.id}}"
+                    td 
+                      | {{type.id}}
+                    td 
+                      | 
+                    td 
+                      | {{type.name}}
+                    td ng-bind="type.is_displayed == 1 ? 'Hiện' : 'Ẩn'"
         .clearfix

@@ -9,3 +9,4 @@
 //= require_tree ./angular_js/controllers
 //= require_tree ./angular_js/directives
 //= require_tree ./angular_js/services
+//= require_tree ./angular_js/modules
