@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get 'api2'
       post 'api3'
       post 'api4'
+      post 'api5'
     end
   end
   # get 'lien-he' => 'contacts#index', as: :contacts

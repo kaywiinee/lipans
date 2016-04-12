@@ -22,7 +22,7 @@
           .col-md-6
             .form-group ng-class="{'has-error': error==5}"
               label Hình
-              input type="file" capture="camera" accept="image/*" post-image="onPostImage($files)"
-              img ng-src="{{type.image}}" style="margin-top: 10px"
+              input type="file" capture="camera" accept="image/*" post-image="onPostImage($files)" class="type-image-input"
+              img class="type-image" ng-src="{{type.image_url}}"
             button.btn.btn-primary ng-click="create(type)" type="submit" Submit
             button.btn.btn-default type="button" ng-click="reset()" Reset

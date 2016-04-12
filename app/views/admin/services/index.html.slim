@@ -18,13 +18,11 @@
           .fixed-table-toolbar
             .columns.btn-group.pull-right
               button.btn.btn-default title="Tạo mới" type="button" ng-click="addNewService()"
-                svg.glyph.stroked.pencil style="height: 16px;width: 16px; margin: 0; stroke-width: 3px;"
+                svg.glyph.stroked.pencil.icon-glyph
                   use xlink:href="#stroked-pencil"
               button.btn.btn-default title="Xóa" type="button" ng-click="deleteService()"
-                svg.glyph.stroked.cancel style="height: 16px;width: 16px; margin: 0; stroke-width: 3px;"
+                svg.glyph.stroked.cancel.icon-glyph
                   use xlink:href="#stroked-cancel"
-            .pull-right.search
-              input.form-control placeholder="Search" type="text" /
           .fixed-table-container
             .fixed-table-header
               table
@@ -64,7 +62,7 @@
                         | Ản hiện
                       .fht-cell
                 tbody
-                  tr ng-repeat="service in services" ng-click="editService(service)"
+                  tr ng-repeat="service in services" ng-click="editService($event,service)"
                     td.bs-checkbox
                       input class="service_id" type="checkbox" value="{{service.id}}"
                     td 
@@ -101,13 +99,8 @@
           .fixed-table-toolbar
             .columns.btn-group.pull-right
               button.btn.btn-default title="Tạo mới" type="button" ng-click="addNewType()"
-                svg.glyph.stroked.pencil style="height: 16px;width: 16px; margin: 0; stroke-width: 3px;"
+                svg.glyph.stroked.pencil.icon-glyph
                   use xlink:href="#stroked-pencil"
-              button.btn.btn-default title="Xóa" type="button" ng-click="deleteService()"
-                svg.glyph.stroked.cancel style="height: 16px;width: 16px; margin: 0; stroke-width: 3px;"
-                  use xlink:href="#stroked-cancel"
-            .pull-right.search
-              input.form-control placeholder="Search" type="text" /
           .fixed-table-container
             .fixed-table-header
               table
@@ -115,16 +108,12 @@
               .fixed-table-loading style=("top: 37px; display: none;")  Loading, please wait…
               table.table.table-hover
                 thead
-                  tr
-                    th.bs-checkbox style=("width: 36px; ") 
-                      .th-inner
-                        input name="btSelectAll" type="checkbox" /
-                      .fht-cell
-                    th
+                  tr 
+                    th style=("width: 36px;")
                       .th-inner.sortable
                         | ID
                       .fht-cell
-                    th
+                    th style=("width: 120px;")
                       .th-inner.sortable 
                         | Hình
                         span.order
@@ -134,18 +123,16 @@
                       .th-inner.sortable 
                         | Tên
                       .fht-cell
-                    th
+                    th style=("width: 100px;")
                       .th-inner.sortable 
                         | Ẩn hiện
                       .fht-cell
                 tbody
-                  tr ng-repeat="type in list_types"
-                    td.bs-checkbox
-                      input class="type_id" type="checkbox" value="{{type.id}}"
+                  tr ng-repeat="type in list_types" ng-click="editType(type)"
                     td 
                       | {{type.id}}
                     td 
-                      | 
+                      img ng-src="{{type.image_url}}" width="100" height="100"
                     td 
                       | {{type.name}}
                     td ng-bind="type.is_displayed == 1 ? 'Hiện' : 'Ẩn'"

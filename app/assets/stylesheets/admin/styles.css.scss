@@ -570,7 +570,7 @@ a.bg-danger:hover {
 .sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
 	color: #fff;
 	background-color: #30a5ff;
-}*/
+}
 
 .sidebar ul.nav ul,
 .sidebar ul.nav ul li {
@@ -927,6 +927,19 @@ h1.page-header {
 	border-color: #ddd;
 	height: 65px;
 	overflow: scroll;
+}
+
+.type-image {
+	margin-top: 10px;
+	width: 190px;
+	height: 190px;
+}
+
+.icon-glyph {
+	height: 16px;
+	width: 16px; 
+	margin: 0; 
+	stroke-width: 3px;
 }
 
 

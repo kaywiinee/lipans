@@ -67,45 +67,83 @@ window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,templa
           alert rs.message
       return
 
-  $scope.editService = (service)->
-    Modal.action('service_detail','modal-edit-service', ($scope,modalInstance)->
-      $scope.service = service
-      ServicesApi.api2().then (rs)->
-          if rs.status == 1
-            $scope.types = rs.data
-          else
-            alert rs.message
-      
-      $scope.create = (service)->
-        ServicesApi.api3(service).then (rs)->
+  $scope.editService = ($event,service)->
+    if $($event.target).hasClass('service_id')
+      return
+    else
+      Modal.action('service_detail','modal-edit-service', ($scope,modalInstance)->
+        $scope.service = service
+        ServicesApi.api2().then (rs)->
+            if rs.status == 1
+              $scope.types = rs.data
+            else
+              alert rs.message
+        
+        $scope.create = (service)->
+          ServicesApi.api3(service).then (rs)->
+            if rs.status == 1
+              modalInstance.dismiss('cancel')
+            else
+              $scope.error = rs.status
+
+        $scope.reset = ()->
+          id = $scope.service.id
+          $scope.service = {}
+          $scope.service.id = id
+      , ()->
+        $scope.load()
+      )
+      return
+
+  $scope.addNewType = ()->
+    if $scope.list_types.length >= 5
+      alert 'Số service đã đạt mức tối đa, không thể tạo thêm nữa.'
+    else
+      Modal.action('service_type','modal-add-new-type', ($scope,modalInstance)->
+        $scope.type = {}
+        
+        $scope.getFile = ()->   
+          fileReader.readAsDataUrl($scope.file, $scope).then (result)->
+            $scope.type.image_url = result
+            
+        $scope.create = (type)->
+          ServicesApi.api5(type).then (rs)->
+            if rs.status == 1
+              modalInstance.dismiss('cancel')
+            else
+              $scope.error = rs.status
+
+        $scope.reset = ()->
+          $scope.type = {}
+          $('.type-image').attr('src', '')
+          $('.type-image-input').val('')
+      , ()->
+        $scope.loadType()
+      )
+      return
+
+  $scope.editType = (type)->
+    Modal.action('service_type','modal-edit-type', ($scope,modalInstance)->
+      $scope.type = type
+
+      $scope.getFile = ()->   
+        fileReader.readAsDataUrl($scope.file, $scope).then (result)->
+          $scope.type.image_url = result
+
+      $scope.create = (type)->
+        ServicesApi.api5(type).then (rs)->
           if rs.status == 1
             modalInstance.dismiss('cancel')
           else
             $scope.error = rs.status
 
       $scope.reset = ()->
-        id = $scope.service.id
-        $scope.service = {}
-        $scope.service.id = id
-    , ()->
-      $scope.load()
-    )
-    return
-
-  $scope.addNewType = ()->
-    Modal.action('service_type','modal-add-new-type', ($scope,modalInstance)->
-      $scope.type = {}
-      
-      $scope.getFile = ()->   
-        fileReader.readAsDataUrl($scope.file, $scope).then (result)->
-          $scope.type.image = result
-          
-      $scope.create = (type)->
-        console.log type
-
-      $scope.reset = ()->
+        id = $scope.type.id
         $scope.type = {}
+        $('.type-image').attr('src', '')
+        $('.type-image-input').val('')
+        $scope.type.id = id
     , ()->
       $scope.loadType()
     )
-    return 
+    return
