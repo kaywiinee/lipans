@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -21,8 +22,12 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'page#index', via: :get
     resources :services
+    
+    resources :users, :only => [:index] do
+      post :login, to: "users#login_success", on: :collection
+      get :logout, to: "users#logout", on: :collection
+    end
   end
-
   ################
   #     API
   ################
