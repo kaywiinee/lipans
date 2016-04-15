@@ -68,6 +68,8 @@ gem 'paperclip'
 # Use unicorn as the app server
 gem 'unicorn'
 
+gem 'ckeditor'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

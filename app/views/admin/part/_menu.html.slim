@@ -41,10 +41,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
         | Dịch vụ
 
     li
-      a href="charts.html" 
+      = link_to admin_blogs_path
         svg.glyph.stroked.line-graph
           use xlink:href="#stroked-line-graph" 
-        | Charts
+        | Blog
     li
       a href="tables.html" 
         svg.glyph.stroked.table
@@ -102,16 +102,3 @@ javascript:
     $(this).hide();
   });
   
-  !function ($) {
-      $(document).on("click","ul.nav li.parent > a > span.icon", function(){      
-        $(this).find('em:first').toggleClass("glyphicon-minus");    
-      }); 
-      $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-    }(window.jQuery);
-
-    $(window).on('resize', function () {
-      if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-    })
-    $(window).on('resize', function () {
-      if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-    })

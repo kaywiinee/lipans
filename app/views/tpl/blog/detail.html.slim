@@ -1,0 +1,33 @@
+.col-lg-12
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading Chi tiết dịch vụ
+        .panel-body
+          .col-md-12
+            .form-group ng-class="{'has-error': error==3}"
+              label Tiêu đề
+              input.form-control placeholder="Tiêu đề" ng-model="blog.title"
+          .col-md-3
+            .form-group ng-init="blog.is_displayed" ng-class="{'has-error': error==4}"
+              label Ẩn hiện
+              .radio
+                label
+                  input type="radio" value="1" ng-model="blog.is_displayed"
+                  | Hiện
+              .radio
+                label
+                  input type="radio" value="0" ng-model="blog.is_displayed"
+                  | Ẩn
+          .col-md-9
+            .form-group ng-class="{'has-error': error==5}"
+              label Selects
+              select.form-control ng-model="blog.type_id"
+                option value="{{type.id}}" ng-repeat="type in types"
+                  | {{type.name}}
+          .col-md-12
+            .form-group ng-class="{'has-error': error==6}"
+              label Nội dung
+              .form-control ck-editor="" ng-model="blog.content"
+            button.btn.btn-primary ng-click="create(blog)" type="submit" Submit
+            button.btn.btn-default type="reset" ng-click="reset()" Reset

@@ -26,3 +26,5 @@
 //= require module/refesh
 
 //= require_tree ./admin
+
+//= require ckeditor/init

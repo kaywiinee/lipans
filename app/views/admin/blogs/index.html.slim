@@ -1,0 +1,79 @@
+= render 'admin/part/menu'
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main ng-controller="BlogsCtrl" ng-init="init()"
+  .row
+    ol.breadcrumb
+      li
+        a href="#" 
+          svg.glyph.stroked.home
+            use xlink:href="#stroked-home" 
+      li.active Icons
+  .row
+    .col-lg-12
+      h1.page-header Tables
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading Dịch vụ
+      .panel-body
+        .bootstrap-table
+          .fixed-table-toolbar
+            .columns.btn-group.pull-right
+              button.btn.btn-default title="Tạo mới" type="button" ng-click="addNewBlog()"
+                svg.glyph.stroked.pencil.icon-glyph
+                  use xlink:href="#stroked-pencil"
+              button.btn.btn-default title="Xóa" type="button" ng-click="deleteService()"
+                svg.glyph.stroked.cancel.icon-glyph
+                  use xlink:href="#stroked-cancel"
+          .fixed-table-container
+            .fixed-table-header
+              table
+            .fixed-table-body
+              .fixed-table-loading style=("top: 37px; display: none;")  Loading, please wait…
+              table.table.table-hover
+                thead
+                  tr
+                    th.bs-checkbox style=("width: 36px; ") 
+                      .th-inner
+                        input name="btSelectAll" type="checkbox" /
+                      .fht-cell
+                    th
+                      .th-inner.sortable
+                        | ID
+                      .fht-cell
+                    th
+                      .th-inner.sortable 
+                        | Tiêu đề
+                      .fht-cell
+                    th
+                      .th-inner.sortable
+                        | Loại
+                      .fht-cell
+                    th
+                      .th-inner.sortable 
+                        | Ẩn hiện
+                      .fht-cell
+                tbody
+                  tr ng-repeat="blog in blogs" ng-click="editBlog($event,blog)"
+                    td.bs-checkbox
+                      input class="blog_id" type="checkbox" value="{{blog.id}}"
+                    td 
+                      | {{blog.id}}
+                    td 
+                      | {{blog.title}}
+                    td 
+                      | {{blog.type.name}}
+                    td ng-bind="blog.is_displayed == 1 ? 'Hiện' : 'Ẩn'"
+            .fixed-table-pagination ng-show="total > 1"
+              .pull-right.pagination
+                ul.pagination
+                  li.page-first ng-class="{'disabled': page==1}"
+                    a ng-click="setPage(1)" &lt;&lt;
+                  li.page-pre ng-class="{'disabled': page==1}"
+                    a ng-click="setPage(page-1)"  &lt;
+                  li.page-number ng-repeat="p in totalPages" ng-class="{'active disabled': page==p}"
+                    a ng-click="setPage(p)"
+                      | {{p}}
+                  li.page-next ng-class="{'disabled': page==total}"
+                    a ng-click="setPage(page+1)"  &gt;
+                  li.page-last ng-class="{'disabled': page==total}"
+                    a ng-click="setPage(totalPages)"  &gt;&gt;
+        .clearfix

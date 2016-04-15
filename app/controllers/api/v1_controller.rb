@@ -18,8 +18,10 @@ class Api::V1Controller < ApiController
   end
 
   # get list types
+  # params {type}
   def api2
-    types = Type.kind('service')
+    render_failed_by_missing_params('Thiếu biến') and return if params[:type].nil?
+    types = Type.kind(params[:type])
     types = types.displayed if params[:all].nil?
     render_success(types)
   end
@@ -76,4 +78,38 @@ class Api::V1Controller < ApiController
     type.save! unless type.invalid?
     render_success({})
   end
+
+  # get list blogs
+  # params {page}
+  def api6
+    limit = params[:limit].to_i.abs > 0 ? params[:limit].to_i.abs : 10
+    page = params[:page].to_i.abs > 0 ? params[:page].to_i.abs : 1
+    
+    blogs = []
+    Blog.page(page).per(limit).each do |blog|
+      blog_json = blog.as_json
+      blog_json['type'] = blog.type
+      blogs << blog_json
+    end
+    is_full = blogs.length%10 == 0 ? 1 : 0
+    total = (Service.all.length.to_f/limit).ceil
+    render_success ({blogs: blogs, total: total, is_full: is_full})
+  end
+
+  # create or update blog
+  # params {name, price, description, is_displayed, types[array]}
+  def api7
+    render_failed(3,'Chưa nhập tiêu đề') and return if params[:title].nil?
+    render_failed(4,'Chưa chọn ẩn hiện') and return if params[:is_displayed].nil?
+    render_failed(5,'Chưa chọn loại') and return if params[:type_id].nil?
+    render_failed(6,'Chưa nhập ') and return if params[:content].nil?
+
+    blog_params = params.permit(:title, :content, :is_displayed, :type_id)
+    blog = params[:id].present? ? Blog.find_by_id(params[:id]) : Blog.new()
+    blog.attributes = blog_params
+    blog.save! unless blog.invalid?
+
+    render_success({})
+  end
+
 end

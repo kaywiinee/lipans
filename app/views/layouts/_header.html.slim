@@ -20,10 +20,13 @@ header#header.m-animated
               span
                 = link_to 'Theo loại', all_products_path
               ul.sub-menu
-                - @types = Type.all
+                - @types = Type.kind('blog')
                 - @types.each do |type|
                   li class="type-product#{type.id}"
                     = link_to type.name, type_path(type.id)
+            li#service
+              span
+                = link_to 'Spa', service_path
             li#contacts
               span 
                 = link_to 'Liên hệ', contacts_path

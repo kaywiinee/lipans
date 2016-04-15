@@ -1,0 +1,31 @@
+= render 'layouts/header'
+#wrapper
+  #core.core-bg-1
+    #page-header
+      .container
+        h1 Spa
+    .container
+      #page-content
+        .various-content
+          - @types = Type.kind('service')
+          - if @types.length > 0
+            - @types.each do |type|
+              section
+                h2
+                  = type.name
+                .row
+                  .col-sm-2
+                    p.textalign-center.margin-sides-auto.max-width-180
+                      img.rounded alt="#{type.name}" src="#{type.image_url}"
+                  .col-sm-10
+                    ul.c-accordion
+                      - type.services.each do |service|
+                        li.m-has-price
+                          h3.accordion-title
+                            = service.name
+                          p.accordion-price
+                            | #{service.price}.000VND
+                          .accordion-content
+                            p
+                              = service.description
+          

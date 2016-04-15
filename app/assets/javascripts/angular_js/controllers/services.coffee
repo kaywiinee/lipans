@@ -1,9 +1,8 @@
-window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,templateHelper,Modal,fileReader) ->
+window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,Modal,fileReader) ->
   'use strict'
 
-  $scope.page = 1
-
   $scope.init = ()->
+    $scope.page = 1
     $scope.load()
     $scope.loadType()
 
@@ -18,7 +17,7 @@ window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,templa
         alert rs.message
 
   $scope.loadType = ()->
-    ServicesApi.api2({all: 1}).then (rs)->
+    ServicesApi.api2({all: 1,type: 'service'}).then (rs)->
       if rs.status == 1
         $scope.list_types = rs.data
       else
@@ -30,7 +29,7 @@ window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,templa
 
   $scope.addNewService = ()->
     Modal.action('service_detail','modal-add-new-service', ($scope,modalInstance)->
-      ServicesApi.api2().then (rs)->
+      ServicesApi.api2({type: 'service'}).then (rs)->
         if rs.status == 1  
           $scope.types = rs.data
         else
@@ -73,7 +72,7 @@ window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,templa
     else
       Modal.action('service_detail','modal-edit-service', ($scope,modalInstance)->
         $scope.service = service
-        ServicesApi.api2().then (rs)->
+        ServicesApi.api2({type: 'service'}).then (rs)->
             if rs.status == 1
               $scope.types = rs.data
             else

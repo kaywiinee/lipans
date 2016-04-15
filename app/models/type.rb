@@ -3,6 +3,7 @@ class Type < ActiveRecord::Base
   has_many :type_services, dependent: :destroy
   has_many :services, through: :type_services
   has_one :image, class_name: 'ImageType::Service', as: :parent, dependent: :destroy, :autosave => true
+  has_many :blogs
 
   scope :kind, ->(kind) { where(kind: kind) }
   scope :displayed, ->() { where(is_displayed: true) }

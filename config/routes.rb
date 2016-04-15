@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -15,13 +16,14 @@ Rails.application.routes.draw do
   get 'ket-qua-tim-kiem' => 'main#all', as: :search
   match '/lien-he', to: 'contacts#index', via: 'get', as: :contacts
   match '/lien-he', to: 'contacts#create', via: 'post', as: :contacts_post
-
+  get 'dich-vu', to: 'main#service', as: :service
   ################
   #     ADMIN
   ################
   namespace :admin do
     root to: 'page#index', via: :get
     resources :services
+    resources :blogs
     
     resources :users, :only => [:index] do
       post :login, to: "users#login_success", on: :collection
@@ -39,6 +41,8 @@ Rails.application.routes.draw do
       post 'api3'
       post 'api4'
       post 'api5'
+      get 'api6'
+      post 'api7'
     end
   end
   # get 'lien-he' => 'contacts#index', as: :contacts

@@ -4,6 +4,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def login_success
+    redirect_to new_user_session_path if params[:user].nil? || params[:user][:email].nil? || params[:user][:password].nil?
     user = User.find_by(email: params[:user][:email])
     unless user && user.valid_password?(params[:user][:password])
       redirect_to new_user_session_path
@@ -18,7 +19,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def logout
-    sign_out current_user
+    sign_out current_user if current_user.present?
     redirect_to admin_root_path
   end
 end

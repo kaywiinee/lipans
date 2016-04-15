@@ -943,7 +943,11 @@ h1.page-header {
 }
 
 
-
+.modal-add-new-blog, .modal-edit-blog {
+  .modal-dialog {
+    width: 1000px;
+  }
+}
 
 
 

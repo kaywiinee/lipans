@@ -60,4 +60,8 @@ class MainController < ApplicationController
     @best_products = Product.where(is_best: true)
   end
 
+  def service
+    
+  end
+
 end
