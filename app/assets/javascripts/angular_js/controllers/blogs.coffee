@@ -1,4 +1,4 @@
-window.Lipans.App.controller 'BlogsCtrl', ($scope,$element,ServicesApi,Modal) ->
+window.Lipans.App.controller 'BlogsCtrl', ($scope,$element,ServicesApi,Modal,fileReader) ->
 
   $scope.init = ()->
     $scope.page = 1
@@ -24,15 +24,20 @@ window.Lipans.App.controller 'BlogsCtrl', ($scope,$element,ServicesApi,Modal) ->
 
   $scope.addNewBlog = ()->
     Modal.action('blog_detail','modal-add-new-blog', ($scope,modalInstance)->
+      $scope.blog = {}
+
       ServicesApi.api2({type: 'blog'}).then (rs)->
         if rs.status == 1  
           $scope.types = rs.data
         else
           alert rs.message
 
+      $scope.getFile = ()->   
+        fileReader.readAsDataUrl($scope.file, $scope).then (result)->
+          $scope.blog.image_title = result
+
       $scope.create = (blog)->
         ServicesApi.api7(blog).then (rs)->
-          console.log rs
           if rs.status == 1
             modalInstance.dismiss('cancel')
           else
@@ -53,12 +58,17 @@ window.Lipans.App.controller 'BlogsCtrl', ($scope,$element,ServicesApi,Modal) ->
     else
       Modal.action('blog_detail','modal-edit-blog', ($scope,modalInstance)->
         $scope.blog = blog
+        console.log blog
         ServicesApi.api2({type: 'blog'}).then (rs)->
             if rs.status == 1
               $scope.types = rs.data
             else
               alert rs.message
         
+        $scope.getFile = ()->   
+          fileReader.readAsDataUrl($scope.file, $scope).then (result)->
+            $scope.blog.image_title = result
+
         $scope.create = (blog)->
           ServicesApi.api7(blog).then (rs)->
             if rs.status == 1

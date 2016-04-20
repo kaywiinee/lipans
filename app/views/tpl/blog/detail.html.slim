@@ -4,12 +4,16 @@
       .panel.panel-default
         .panel-heading Chi tiết dịch vụ
         .panel-body
-          .col-md-12
+          .col-md-4
             .form-group ng-class="{'has-error': error==3}"
               label Tiêu đề
               input.form-control placeholder="Tiêu đề" ng-model="blog.title"
-          .col-md-3
-            .form-group ng-init="blog.is_displayed" ng-class="{'has-error': error==4}"
+            .form-group ng-class="{'has-error': error==4}"
+              label Selects
+              select.form-control ng-model="blog.type_id"
+                option value="{{type.id}}" ng-repeat="type in types"
+                  | {{type.name}}
+            .form-group ng-init="blog.is_displayed" ng-class="{'has-error': error==5}"
               label Ẩn hiện
               .radio
                 label
@@ -19,14 +23,13 @@
                 label
                   input type="radio" value="0" ng-model="blog.is_displayed"
                   | Ẩn
-          .col-md-9
-            .form-group ng-class="{'has-error': error==5}"
-              label Selects
-              select.form-control ng-model="blog.type_id"
-                option value="{{type.id}}" ng-repeat="type in types"
-                  | {{type.name}}
-          .col-md-12
+          .col-md-8
             .form-group ng-class="{'has-error': error==6}"
+              label Hình
+              input type="file" capture="camera" accept="image/*" post-image="onPostImage($files)" class="type-image-input"
+              img class="image-blog" ng-src="{{blog.image_title}}"
+          .col-md-12
+            .form-group ng-class="{'has-error': error==7}"
               label Nội dung
               .form-control ck-editor="" ng-model="blog.content"
             button.btn.btn-primary ng-click="create(blog)" type="submit" Submit

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   match '/lien-he', to: 'contacts#index', via: 'get', as: :contacts
   match '/lien-he', to: 'contacts#create', via: 'post', as: :contacts_post
   get 'dich-vu', to: 'main#service', as: :service
-  
+  get 'bai-viet', to: 'main#blog', as: :blog
   ################
   #     ADMIN
   ################

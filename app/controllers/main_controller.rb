@@ -64,4 +64,9 @@ class MainController < ApplicationController
     
   end
 
+  def blog
+    @page = params[:page].present? ? params[:page].to_i : 1
+    @blogs = Blog.page(@page).per(5)
+  end
+
 end

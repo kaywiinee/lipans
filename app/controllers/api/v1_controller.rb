@@ -90,6 +90,7 @@ class Api::V1Controller < ApiController
     Blog.page(page).per(limit).each do |blog|
       blog_json = blog.as_json
       blog_json['type'] = blog.type
+      blog_json['image_title'] = blog.image_title
       blogs << blog_json
     end
     is_full = blogs.length%10 == 0 ? 1 : 0
@@ -101,13 +102,27 @@ class Api::V1Controller < ApiController
   # params {name, price, description, is_displayed, types[array]}
   def api7
     render_failed(3,'Chưa nhập tiêu đề') and return if params[:title].nil?
-    render_failed(4,'Chưa chọn ẩn hiện') and return if params[:is_displayed].nil?
-    render_failed(5,'Chưa chọn loại') and return if params[:type_id].nil?
-    render_failed(6,'Chưa nhập ') and return if params[:content].nil?
+    render_failed(4,'Chưa chọn loại') and return if params[:type_id].nil?
+    render_failed(5,'Chưa chọn ẩn hiện') and return if params[:is_displayed].nil?
+    render_failed(6,'Chưa có hình chủ đề') and return if params[:image_title].nil?
+    render_failed(7,'Chưa nhập nội dung') and return if params[:content].nil?
 
-    blog_params = params.permit(:title, :content, :is_displayed, :type_id)
-    blog = params[:id].present? ? Blog.find_by_id(params[:id]) : Blog.new()
-    blog.attributes = blog_params
+    if params[:id].present?
+      blog = Blog.find_by_id(params[:id])
+      blog.title = params[:title]
+      blog.is_displayed = params[:is_displayed]
+      blog.type_id = params[:type_id]
+      blog.content = params[:content]
+      blog.image.image = params[:image_title]
+    else
+      blog = Blog.new(
+        title: params[:title],
+        is_displayed: params[:is_displayed].to_i,
+        type_id: params[:type_id],
+        content: params[:content],
+        image: params[:image_title]
+      )
+    end
     blog.save! unless blog.invalid?
 
     render_success({})
