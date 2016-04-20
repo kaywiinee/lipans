@@ -9,7 +9,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
         span.icon-bar
         span.icon-bar
       a.navbar-brand href="#" 
-        span> Lumino
+        span> Lipans
         | Admin
       ul.user-menu
         li.dropdown.pull-right
@@ -25,74 +25,22 @@ nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
                   use xlink:href="#stroked-cancel" 
                 | Logout
 #sidebar-collapse.col-sm-3.col-lg-2.sidebar
-  form role="search" 
-    .form-group
-      input.form-control placeholder="Search" type="text" /
   ul.nav.menu
-    li.active
-      a href="index.html" 
+    li#home
+      = link_to admin_root_path
         svg.glyph.stroked.dashboard-dial
           use xlink:href="#stroked-dashboard-dial" 
-        | Dashboard
-    li
+        | Trang chủ
+    li#services
       = link_to admin_services_path
         svg.glyph.stroked.calendar
           use xlink:href="#stroked-calendar" 
         | Dịch vụ
-
-    li
+    li#blogs
       = link_to admin_blogs_path
-        svg.glyph.stroked.line-graph
-          use xlink:href="#stroked-line-graph" 
-        | Blog
-    li
-      a href="tables.html" 
-        svg.glyph.stroked.table
-          use xlink:href="#stroked-table" 
-        | Tables
-    li
-      a href="forms.html" 
         svg.glyph.stroked.pencil
           use xlink:href="#stroked-pencil" 
-        | Forms
-    li
-      a href="panels.html" 
-        svg.glyph.stroked.app-window
-          use xlink:href="#stroked-app-window" 
-        | Alerts &amp; Panels
-    li
-      a href="icons.html" 
-        svg.glyph.stroked.star
-          use xlink:href="#stroked-star" 
-        | Icons
-    li.parent
-      a href="#" 
-        span data-toggle="collapse" href="#sub-item-1" 
-          svg.glyph.stroked.chevron-down
-            use xlink:href="#stroked-chevron-down" 
-        | Dropdown
-      ul#sub-item-1.children.collapse
-        li
-          a href="#" 
-            svg.glyph.stroked.chevron-right
-              use xlink:href="#stroked-chevron-right" 
-            | Sub Item 1
-        li
-          a href="#" 
-            svg.glyph.stroked.chevron-right
-              use xlink:href="#stroked-chevron-right" 
-            | Sub Item 2
-        li
-          a href="#" 
-            svg.glyph.stroked.chevron-right
-              use xlink:href="#stroked-chevron-right" 
-            | Sub Item 3
-    li.divider role="presentation" 
-    li
-      a href="login.html" 
-        svg.glyph.stroked.male-user
-          use xlink:href="#stroked-male-user" 
-        | Login Page
+        | Blog
 
 javascript:
   $('.user-menu .dropdown-toggle').mouseenter(function(){

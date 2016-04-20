@@ -5,7 +5,8 @@ window.Lipans.Service.factory 'templateHelper', ($templateCache) ->
   arrTemplate = {
     service_detail: 'service/detail',
     service_type: 'service/type',
-    blog_detail: 'blog/detail'
+    blog_detail: 'blog/detail',
+    blog_type: 'blog/type'
   }
   $.each arrTemplate, (key,url) ->
     $templateCache.put key,path + url

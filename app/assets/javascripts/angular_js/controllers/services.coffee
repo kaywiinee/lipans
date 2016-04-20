@@ -106,6 +106,7 @@ window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,Modal,
             $scope.type.image_url = result
             
         $scope.create = (type)->
+          type.kind = 'service'
           ServicesApi.api5(type).then (rs)->
             if rs.status == 1
               modalInstance.dismiss('cancel')
@@ -130,6 +131,7 @@ window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,Modal,
           $scope.type.image_url = result
 
       $scope.create = (type)->
+        type.kind = 'service'
         ServicesApi.api5(type).then (rs)->
           if rs.status == 1
             modalInstance.dismiss('cancel')

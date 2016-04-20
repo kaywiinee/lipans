@@ -1,5 +1,7 @@
 $ ->
   location = window.location.href.split('/')[3]
+  location_admin = window.location.href.split('/')[4]
+  
   switch location
     when 'tat-ca-san-pham'
       $('header #all-products').addClass('m-active')
@@ -11,3 +13,11 @@ $ ->
       $('header #contacts').addClass('m-active')
     else
       $('#home').addClass('m-active')
+
+  switch location_admin
+    when 'services'
+      $('ul.menu #services').addClass('active')
+    when 'blogs'
+      $('ul.menu #blogs').addClass('active')
+    else
+      $('ul.menu #home').addClass('active')

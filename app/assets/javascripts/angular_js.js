@@ -10,3 +10,5 @@
 //= require_tree ./angular_js/directives
 //= require_tree ./angular_js/services
 //= require_tree ./angular_js/modules
+
+//= require module/set_active

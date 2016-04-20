@@ -59,19 +59,20 @@ class Api::V1Controller < ApiController
   def api5
     render_failed(3,'Chưa nhập tên') and return if params[:name].nil?
     render_failed(4,'Chưa chọn ẩn hiện') and return if params[:is_displayed].nil?
-    render_failed(5,'Chưa chọn hình') and return if params[:image_url].nil?
+    render_failed(5,'Chưa chọn hình') and return if params[:image_url].nil? && params[:kind].nil? && params[:kind] == 'service'
+    render_failed_by_missing_params('Không có loại') and return if params[:kind].nil?
 
     if params[:id].present?
       type = Type.find_by_id(params[:id])
       type.name = params[:name]
-      type.is_displayed = params[:is_displayed].to_i
-      type.image.image = params[:image_url]
+      type.is_displayed = params[:is_displayed]
+      type.image.image = params[:image_url] if params[:kind] == 'service'
     else
       type = Type.new(
         name: params[:name],
         is_displayed: params[:is_displayed].to_i,
-        kind: 'service',
-        image: params[:image_url]
+        kind: params[:kind],
+        image: params[:kind] == 'service' ? params[:image_url] : nil
       )
     end
 
@@ -109,6 +110,14 @@ class Api::V1Controller < ApiController
     blog.attributes = blog_params
     blog.save! unless blog.invalid?
 
+    render_success({})
+  end
+
+  # delete blog
+  # params {blogs_id[array]}
+  def api8
+    render_failed_by_missing_params('Chưa chọn bài viết cần xóa') and return if params[:blogs_id].nil? || params[:blogs_id].blank?
+    Blog.where(id: params[:blogs_id]).destroy_all
     render_success({})
   end
 

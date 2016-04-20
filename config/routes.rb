@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   match '/lien-he', to: 'contacts#index', via: 'get', as: :contacts
   match '/lien-he', to: 'contacts#create', via: 'post', as: :contacts_post
   get 'dich-vu', to: 'main#service', as: :service
+  
   ################
   #     ADMIN
   ################
@@ -43,6 +44,7 @@ Rails.application.routes.draw do
       post 'api5'
       get 'api6'
       post 'api7'
+      post 'api8'
     end
   end
   # get 'lien-he' => 'contacts#index', as: :contacts
