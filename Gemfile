@@ -69,7 +69,8 @@ gem 'paperclip'
 gem 'unicorn'
 
 gem 'ckeditor'
-
+gem 'html_truncator'
+gem 'nokogiri'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

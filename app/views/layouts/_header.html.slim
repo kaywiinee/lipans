@@ -20,8 +20,8 @@ header#header.m-animated
               span
                 = link_to 'Theo loại', all_products_path
               ul.sub-menu
-                - @types = Type.kind('product')
-                - @types.each do |type|
+                - types = Type.kind('product').displayed
+                - types.each do |type|
                   li class="type-product#{type.id}"
                     = link_to type.name, type_path(type.id)
             li#service
@@ -29,12 +29,12 @@ header#header.m-animated
                 = link_to 'Spa', service_path
             li#blog.m-has-submenu
               span
-                = link_to 'Bài viết chia sẻ', blog_path
+                = link_to 'Bài viết chia sẻ', blog_path(id: 'tat-ca')
               ul.sub-menu
-                - @types = Type.kind('blog')
-                - @types.each do |type|
-                  li class="type-blog#{type.id}"
-                    = link_to type.name, type_path(type.id)
+                - blogs = Type.kind('blog').displayed
+                - blogs.each do |blog|
+                  li class="type-blog#{blog.id}"
+                    = link_to blog.name, blog_path(id: blog.id)
             li#contacts
               span 
                 = link_to 'Liên hệ', contacts_path

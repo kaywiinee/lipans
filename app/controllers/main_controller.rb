@@ -1,5 +1,4 @@
 class MainController < ApplicationController
-
   def index
     @slide_show = [
       {
@@ -46,7 +45,7 @@ class MainController < ApplicationController
     @page = params[:page].present? ? params[:page].to_i : 1
     if params[:id].present?
       @id = params[:id].to_i
-      @type = Type.find_by(id: @id)
+      @type = Type.find_by_id(@id)
       @total = (@type.products.length.to_f/6).ceil
       @products = @type.products.page(@page).per(6)
     elsif params[:keyword].present?
@@ -54,7 +53,7 @@ class MainController < ApplicationController
       @products = Product.search(@keyword).order(id: :desc)
       @total = 1  
     else
-      @total = Product.all.length/6
+      @total = (Product.all.length.to_f/6).ceil
       @products = Product.page(@page).per(6)
     end
     @best_products = Product.where(is_best: true)
@@ -65,8 +64,17 @@ class MainController < ApplicationController
   end
 
   def blog
+    require "html_truncator"
     @page = params[:page].present? ? params[:page].to_i : 1
-    @blogs = Blog.page(@page).per(5)
+    @id = params[:id]
+    if @id.present? && @id != 'tat-ca'
+      @blog_type = Type.find_by_id(@id)
+      @total = (@blog_type.blogs.length.to_f/5).ceil
+      @blogs = @blog_type.blogs.page(@page).per(5)
+    else
+      @total = (Blog.all.length.to_f/5).ceil
+      @blogs = Blog.page(@page).per(5)
+    end
   end
 
 end

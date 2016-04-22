@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415105641) do
+ActiveRecord::Schema.define(version: 20160422091154) do
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160415105641) do
     t.boolean  "is_displayed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "views",        default: 0
   end
 
   create_table "ckeditor_assets", force: true do |t|

@@ -3,6 +3,8 @@ ul.c-pagination
   li.prev class="#{class_prev}"
     - if @type.present?
       = link_to '<' , type_page_path(id: @id, page: @page-1)
+    - elsif @blog_type.present?
+      = link_to '<' , blog_page_path(id: @id, page: @page-1)
     - else
       = link_to '<' , all_products_page_path(@page-1)
   - (1..@total).each do |num|
@@ -10,11 +12,15 @@ ul.c-pagination
     li class="#{class_pagi}"
       - if @type.present?
         = link_to num , type_page_path(id: @id, page:num)
+      - elsif @blog_type.present?
+        = link_to num , blog_page_path(id: @id, page:num)
       - else
         = link_to num , all_products_page_path(num)
   - class_next = @page == @total ? 'hide' : ''
   li.next class="#{class_next}"
     - if @type.present?
       = link_to '>' , type_page_path(id: @id, page:@page+1)
+    - elsif @blog_type.present?
+      = link_to '>' , blog_page_path(id: @id, page:@page+1)
     - else
       = link_to '>' , all_products_page_path(@page+1)

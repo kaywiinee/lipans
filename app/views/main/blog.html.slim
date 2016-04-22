@@ -12,41 +12,22 @@
               - @blogs.each do |blog|
                 article.image
                   .article-image
-                    = link_to blog.name, blog.images[0]
-                      img alt="" src="images/article_image.jpg" /
+                    = link_to '/'
+                      img src="#{blog.image_title}"
                   header.article-header
-                    span.article-date May 7, 2014
+                    span.article-date
+                      = blog.created_at.strftime('%Y-%m-%d %H:%M')
                     h2.article-title
-                      a href="blog-image.html"  This is image article
+                      = link_to blog.title, '/'
                   .article-content.various-content
-                    p.lead Far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-                    p A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+                    - blog_content = HTML_Truncator.truncate(blog.content, 50)
+                    = blog_content.html_safe
                   footer.article-footer
-                    ul.article-info
-                      li.author N.Mars
-                      li.categories
-                        a href="#" > Beauty
-                        | ,
-                        = succeed "," do
-                          a href="#"  Treatments
-                        a href="#"  Fashion
-                      li.comments
-                        a href="#"  4 comments
                     p.article-more
-                      a.c-button href="blog-image.html"  Read More
-
-            ul.c-pagination
-              li.prev
-                a href="#" 
-                  i.fa.fa-angle-left
-              li
-                a href="#"  1
-              li.m-active
-                a href="#"  2
-              li
-                a href="#"  3
-              li.next
-                a href="#" 
-                  i.fa.fa-angle-right
-
+                      a.c-button href="blog-image.html" Đọc thêm
+            - if @total > 1
+              = render 'part/pagination'
+        .col-md-4
+          = render 'part/side_bar_blog'
+  = render 'layouts/footer'
         
