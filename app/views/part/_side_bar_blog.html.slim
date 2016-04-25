@@ -8,10 +8,10 @@ aside#sidebar
           li
             .cart-product
               p.product-image
-                = link_to '/'
-                  = image_tag best.image_title, alt: best.title
+                = link_to blog_detail_path(best.id)
+                  = image_tag best.image_title(:small), alt: best.title
               h4.product-title
-                = link_to best.title, '/'
+                = link_to best.title, blog_detail_path(best.id)
               p.product-price
                 = best.created_at.strftime('%Y-%m-%d %H:%M')
   .sidebar-widget.sidebar-links
@@ -22,12 +22,19 @@ aside#sidebar
       - categories.each do |cg|
         li class="type-blog#{cg.id}"
           = link_to cg.name, blog_path(id: cg.id)
-  .sidebar-widget.sidebar-articles
+  .sidebar-widget.sidebar-cart
     h3.widget-title Bài viết mới
     .widget-content
-      ul
-        li
-          h4.article-title
-            a href="blog-image.html"  Link to example of image article
-          p.article-date May 7, 2014
+      ul.cart-product-list
+        - news = Blog.order(created_at: :desc).limit(4)
+        - news.each do |new|
+          li
+            .cart-product
+              p.product-image
+                = link_to blog_detail_path(new.id)
+                  = image_tag new.image_title(:small), alt: new.title
+              h4.product-title
+                = link_to new.title, blog_detail_path(new.id)
+              p.product-price
+                = new.created_at.strftime('%Y-%m-%d %H:%M')
   

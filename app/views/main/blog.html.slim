@@ -12,19 +12,19 @@
               - @blogs.each do |blog|
                 article.image
                   .article-image
-                    = link_to '/'
-                      img src="#{blog.image_title}"
+                    = link_to blog_detail_path(blog.id)
+                      = image_tag blog.image_title, alt: blog.title
                   header.article-header
                     span.article-date
                       = blog.created_at.strftime('%Y-%m-%d %H:%M')
                     h2.article-title
-                      = link_to blog.title, '/'
+                      = link_to blog.title, blog_detail_path(blog.id)
                   .article-content.various-content
                     - blog_content = HTML_Truncator.truncate(blog.content, 50)
                     = blog_content.html_safe
                   footer.article-footer
                     p.article-more
-                      a.c-button href="blog-image.html" Đọc thêm
+                      = link_to 'Đọc thêm', blog_detail_path(blog.id), class: 'c-button'
             - if @total > 1
               = render 'part/pagination'
         .col-md-4

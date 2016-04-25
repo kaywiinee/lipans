@@ -31,7 +31,8 @@ class MainController < ApplicationController
       }
     ]
     @best_products = Product.where(is_best: true)
-    @random_products = Product.limit(4).order("RAND()")
+    @blog_news = Blog.limit(4)
+    @all_services = Type.kind('service')
   end
 
   def product
@@ -75,6 +76,12 @@ class MainController < ApplicationController
       @total = (Blog.all.length.to_f/5).ceil
       @blogs = Blog.page(@page).per(5)
     end
+  end
+
+  def blog_detail
+    @blog = Blog.find_by_id(params[:id].to_i)
+    @blog.update_attributes(views: @blog.views+1)
+    redirect_to blog_path('tat-ca') if @blog.nil?
   end
 
 end

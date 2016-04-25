@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'dich-vu', to: 'main#service', as: :service
   get 'bai-viet/:id', to: 'main#blog', as: :blog
   get 'bai-viet/:id/:page', to: 'main#blog', as: :blog_page
+  get 'noi-dung-bai-viet/:id', to: 'main#blog_detail', as: :blog_detail
   ################
   #     ADMIN
   ################

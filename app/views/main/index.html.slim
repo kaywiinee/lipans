@@ -42,7 +42,7 @@
               h2 Sản phẩm bán chạy nhất
               p.subtitle Hiệu quả nhanh chóng sau 10 ngày sử dụng
               p.more
-                = link_to 'Xem tất cả sản phẩm', all_products_path, class: 'c-button m-type-2'
+                = link_to 'Tất cả sản phẩm', all_products_path, class: 'c-button m-type-2'
           .c-service-list.m-paginated data-items="4" data-items-desktop="4" data-items-desktop-small="3" data-items-mobile="1" data-items-tablet="2" 
             .container
               .service-list-inner
@@ -56,22 +56,39 @@
                         = link_to product.name , product_path(product.id)
                       .service-description
                         = product.description.html_safe
-                
-        section
-          header
+        - if @all_services.length >= 4
+          section
+            header
+              .container
+                h2 Spa
+                p.subtitle Giúp bạn có một làn da như ý
+                p.more
+                  = link_to 'Dịch vụ', service_path, class: 'c-button m-type-2'
+            .c-gallery.m-paginated
+              .thumb-list.owl-carousel.owl-theme style=("opacity: 1; display: block;") 
+                .owl-wrapper-outer
+                  .owl-wrapper style=("width: 4032px; left: 0px; display: block;") 
+                    - @all_services.each do |sv|
+                      .owl-item.active style=("width: 252px;") 
+                        .thumb
+                          = link_to service_path, class: 'lightbox'
+                            img src="#{sv.image_url}"
+        - if @blog_news.length >= 4
+          section
+            header
+              .container
+                h2 KINH NGHIỆM LÀM ĐẸP
+                p.subtitle Chia sẻ kinh nghiệm làm đẹp và giữ mãi nét thanh xuân dành cho chị em.
+                p.more
+                  = link_to 'Xem thêm bài viết', blog_path('tat-ca'), class: 'c-button m-type-2'
             .container
-              h2 CÁC SẢN PHẨM KHÁC
-              p.subtitle Hơn 20 dòng sản phẩm thích hợp cho nhiều độ tuổi khác nhau
-              p.more
-                = link_to 'Xem tất cả sản phẩm', all_products_path, class: 'c-button m-type-2'
-          .container
-            .row
-              - @random_products.each do |product|
-                .col-sm-3
-                  article.c-article
-                    .article-image
-                      = link_to product_path(product.id)
-                        = image_tag product.image_url, alt: product.name
-                    h3.article-title
-                      = link_to product.name , product_path(product.id)
+              .row
+                - @blog_news.each do |blog|
+                  .col-sm-3
+                    article.c-article
+                      .article-image
+                        = link_to blog_detail_path(blog.id)
+                          = image_tag blog.image_title(:medium), alt: blog.title
+                      h3.article-title
+                        = link_to blog.title , blog_detail_path(blog.id)
   = render 'layouts/footer'

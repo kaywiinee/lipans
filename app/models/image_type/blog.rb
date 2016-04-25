@@ -3,6 +3,7 @@ class ImageType::Blog < Image
       :default_url => :default_url,
       :styles => {
         small: ['100x100#', :png],
+        medium: ['202X141#', :png],
         original: ['600x250#',:png]
       },
       :url => "/system/:class/:attachment/:id/:style/:basename.:extension",

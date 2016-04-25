@@ -29,12 +29,12 @@ header#header.m-animated
                 = link_to 'Spa', service_path
             li#blog.m-has-submenu
               span
-                = link_to 'Bài viết chia sẻ', blog_path(id: 'tat-ca')
+                = link_to 'Bài viết chia sẻ', blog_path('tat-ca')
               ul.sub-menu
                 - blogs = Type.kind('blog').displayed
                 - blogs.each do |blog|
                   li class="type-blog#{blog.id}"
-                    = link_to blog.name, blog_path(id: blog.id)
+                    = link_to blog.name, blog_path(blog.id)
             li#contacts
               span 
                 = link_to 'Liên hệ', contacts_path

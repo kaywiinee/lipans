@@ -31,9 +31,13 @@ footer#footer
               li
                 = link_to 'Tất cả sản phẩm', all_products_path
               li
+                = link_to 'Spa', service_path
+              li
+                = link_to 'Bài viết chia sẻ', blog_path('tat-ca')
+              li
                 = link_to 'Liên hệ', contacts_path
         .col-md-6.col-md-pull-6
           .footer-text
             p
               | DNTN.
-              a href="#"  Đinh Thị Kim Phượng
+              = link_to 'Đinh Thị Kim Phượng', root_path

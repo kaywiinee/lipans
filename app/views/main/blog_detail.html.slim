@@ -1,0 +1,55 @@
+= render 'layouts/header'
+#wrapper  
+  #core
+    #page-header
+      .container
+        h1 = @blog.title
+        ul.breadcrumbs
+          li
+            = link_to 'Trang chủ', root_path
+          li
+            = link_to @blog.type.name, blog_path(@blog.type.id)
+          li = @blog.title
+    .container
+      .row
+        .col-md-8
+          #page-content
+            .blog-detail
+              article.image
+                .article-image
+                  = link_to blog_detail_path(@blog.id)
+                    = image_tag @blog.image_title, alt: @blog.title
+                .article-content.various-content
+                  = @blog.content.html_safe
+                footer.article-footer
+                  ul.article-info
+                    li.date
+                      = @blog.created_at.strftime('%Y-%m-%d %H:%M')
+                    li.categories
+                      = @blog.type.name
+              ul.article-navigation
+                li.prev
+                  - blog_prev = Blog.find_by_id(@blog.id-1)
+                  - if blog_prev.present?
+                    h5 Xem bài trước
+                    = link_to blog_prev.title, blog_detail_path(blog_prev.id)
+                li.next
+                  - blog_next = Blog.find_by_id(@blog.id+1)
+                  - if blog_next.present?
+                    h5 Xem bài tiếp theo
+                    = link_to blog_next.title, blog_detail_path(blog_next.id)
+              .article-related
+                h2.heading-2.m-small Bài viết liên quan
+                .row
+                  - relatives = Type.find_by_id(@blog.type.id).blogs.limit(3)
+                  - relatives.each do |rela|
+                    .col-sm-4
+                      article.c-article
+                        .article-image
+                          = link_to blog_detail_path(rela.id)
+                            = image_tag rela.image_title, alt: rela.title
+                        h3.article-title
+                          = link_to rela.title, blog_detail_path(rela.id)             
+        .col-md-4
+          = render 'part/side_bar_blog'
+  = render 'layouts/footer'
