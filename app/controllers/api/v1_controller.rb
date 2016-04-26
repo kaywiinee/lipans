@@ -67,7 +67,7 @@ class Api::V1Controller < ApiController
       type = Type.find_by_id(params[:id])
       type.name = params[:name]
       type.is_displayed = params[:is_displayed]
-      type.image.image = params[:image_url] if params[:kind] == 'service'
+      type.image.image = params[:image_url] if params[:kind] == 'service' && params[:is_change_image].present? && params[:is_change_image] == 1
     else
       type = Type.new(
         name: params[:name],

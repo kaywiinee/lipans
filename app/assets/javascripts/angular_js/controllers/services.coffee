@@ -20,7 +20,6 @@ window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,Modal,
     ServicesApi.api2({all: 1,type: 'service'}).then (rs)->
       if rs.status == 1
         $scope.list_types = rs.data
-        console.log $scope.list_types
       else
         alert rs.message
 
@@ -126,10 +125,12 @@ window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,Modal,
   $scope.editType = (type)->
     Modal.action('service_type','modal-edit-type', ($scope,modalInstance)->
       $scope.type = type
+      $scope.type.is_change_image = 0
 
       $scope.getFile = ()->   
         fileReader.readAsDataUrl($scope.file, $scope).then (result)->
           $scope.type.image_url = result
+          $scope.type.is_change_image = 1
 
       $scope.create = (type)->
         type.kind = 'service'
