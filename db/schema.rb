@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 20160426094257) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
+  create_table "contacts", force: true do |t|
+    t.string  "name"
+    t.string  "email"
+    t.integer "phone"
+    t.string  "subject"
+    t.text    "message"
+  end
+
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
