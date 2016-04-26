@@ -20,6 +20,7 @@ window.Lipans.App.controller 'ServicesCtrl', ($scope,$element,ServicesApi,Modal,
     ServicesApi.api2({all: 1,type: 'service'}).then (rs)->
       if rs.status == 1
         $scope.list_types = rs.data
+        console.log $scope.list_types
       else
         alert rs.message
 
