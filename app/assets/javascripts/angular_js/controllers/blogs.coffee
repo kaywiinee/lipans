@@ -58,7 +58,6 @@ window.Lipans.App.controller 'BlogsCtrl', ($scope,$element,ServicesApi,Modal,fil
     else
       Modal.action('blog_detail','modal-edit-blog', ($scope,modalInstance)->
         $scope.blog = blog
-        console.log blog
         ServicesApi.api2({type: 'blog'}).then (rs)->
             if rs.status == 1
               $scope.types = rs.data

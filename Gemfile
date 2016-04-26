@@ -34,15 +34,6 @@ gem 'bower-rails'
 gem 'delayed_job_active_record'
 gem 'devise'
 
-# -- use angularjs width rails
-gem 'rails-assets-lodash'
-gem 'rails-assets-angular',                       '~> 1.2.0'
-gem 'rails-assets-angular-cache'
-gem 'rails-assets-angular-ui-router',             '~> 0.2.9'
-gem 'rails-assets-angular-translate'
-gem 'angular-ui-bootstrap-rails', '~>0.12.0'
-gem 'rails-assets-angular-sanitize'
-
 #bootstrap
 gem 'bootstrap-sass','3.3.4.1'
 gem 'sprockets-rails'

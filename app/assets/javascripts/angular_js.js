@@ -1,9 +1,9 @@
-//= require lodash
-//= require angular
-//= require angular-ui-router
-//= require angular-ui-bootstrap
-//= require angular-ui-bootstrap-tpls
-//= require angular-sanitize
+//= require bower_components/angular/angular.js
+//= require bower_components/angular-animate/angular-animate.js
+//= require bower_components/angular-resource/angular-resource.js
+//= require bower_components/angular-sanitize/angular-sanitize.js
+//= require bower_components/angular-ui-router/release/angular-ui-router.js
+//= require bower_components/angular-bootstrap/ui-bootstrap-tpls.js
 
 //= require angular_js/init
 //= require_tree ./angular_js/controllers
