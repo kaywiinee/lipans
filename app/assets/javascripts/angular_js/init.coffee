@@ -1,6 +1,8 @@
 window.Lipans = {}
 window.Lipans.App = angular.module('Lipans',[
-  'ngSanitize',
+  'ngAnimate'
+  'ngResource'
+  'ngSanitize'
   'ui.router',
   'ui.bootstrap',
   'Service'

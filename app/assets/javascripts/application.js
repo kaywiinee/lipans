@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_tree ./admin
 
 //= require lib/jquery-1.9.1.min
 //= require lib/jquery.magnific-popup.min
@@ -24,7 +25,5 @@
 
 //= require module/set_active
 //= require module/refesh
-
-//= require_tree ./admin
 
 //= require ckeditor/init
