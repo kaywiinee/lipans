@@ -1,3 +1,5 @@
+//= require bower_components/jquery/dist/jquery.min.js
+//= require jquery_ujs
 //= require bower_components/angular/angular.js
 //= require bower_components/angular-animate/angular-animate.js
 //= require bower_components/angular-resource/angular-resource.js
