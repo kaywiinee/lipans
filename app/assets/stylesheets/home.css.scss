@@ -23,3 +23,9 @@
     color: #edcf56;
   }
 }
+.btn-disable {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.7;
+  color: #FD85BF;
+}

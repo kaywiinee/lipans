@@ -1,0 +1,52 @@
+<style type="text/css">
+  .simple_captcha{}
+  .simple_captcha,
+  .simple_captcha div{display: table;}
+  .simple_captcha .simple_captcha_field {
+    margin-top: 25px;
+    float: left;
+  }
+  .simple_captcha .simple_captcha_image{
+    float: left;
+    margin-top: 35px;
+    margin-left: 10px;
+  }
+  .simple_captcha .simple_captcha_image img{
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 110px !important;
+  }
+  .simple_captcha .simple_captcha_label{font-size: 12px;}
+  .simple_captcha .simple_captcha_field input{
+    width: 150px !important;
+    font-size: 16px;
+    border: none;
+    background-color: #efefef;
+  }
+  .simple_captcha_refresh_button {
+    margin-top: 35px;
+    margin-left: 20px;
+    float: left;
+  }
+  .simple_captcha_refresh_button a {
+    color: #A9A9A9;
+    border: 1px solid #A9A9A9;
+    padding: 13px;
+    border-radius: 4px;
+  }
+</style>
+
+<div class='simple_captcha'>
+
+  <div class='simple_captcha_field'>
+    <%= simple_captcha_options[:field] %>
+  </div>
+
+  <div class='simple_captcha_image'>
+    <%= simple_captcha_options[:image] %>
+  </div>  
+
+  <div class='simple_captcha_refresh_button'>
+    <%= simple_captcha_options[:refresh_button] %>
+  </div>
+</div>

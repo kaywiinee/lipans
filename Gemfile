@@ -57,7 +57,7 @@ gem 'kaminari'
 gem 'whenever', :require => false
 
 #captcha
-gem 'humanizer'
+gem 'simple_captcha2', require: 'simple_captcha'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

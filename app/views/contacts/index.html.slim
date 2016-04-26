@@ -61,9 +61,7 @@
                         label for="phone"
                           | Số Điện Thoại
                         = f.text_field :phone, id: "input-phone"
-                      = f.label :humanizer_answer, @contact.humanizer_question
-                      = f.text_field :humanizer_answer
-                      = f.hidden_field :humanizer_question_id
+                        = show_simple_captcha
                     .col-sm-6
                       .form-field
                         label for="subject"
@@ -75,5 +73,5 @@
                           span *
                         = f.text_area :message, id: "input-message", class: "m-required"
                       .form-field
-                        button.submit-btn.c-button data-label=("Gửi") data-loading-label="Đang gửi..." type="submit"  Gửi
+                        button.submit-btn.c-button.btn-disable type="submit" Gửi
   = render 'layouts/footer'
