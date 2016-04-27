@@ -31,8 +31,8 @@ class MainController < ApplicationController
       }
     ]
     @best_products = Product.where(is_best: true)
-    @blog_news = Blog.limit(4)
-    @all_services = Type.kind('service')
+    @blog_news = Blog.limit(4).displayed
+    @all_services = Type.kind('service').displayed
   end
 
   def product

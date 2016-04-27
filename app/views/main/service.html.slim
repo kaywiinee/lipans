@@ -7,7 +7,7 @@
     .container
       #page-content
         .various-content
-          - @types = Type.kind('service')
+          - @types = Type.kind('service').displayed
           - if @types.length > 0
             - @types.each do |type|
               section

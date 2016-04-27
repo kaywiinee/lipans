@@ -2,6 +2,8 @@ class Blog < ActiveRecord::Base
   belongs_to :type
   has_one :image, class_name: 'ImageType::Blog', as: :parent, dependent: :destroy, :autosave => true
   
+  scope :displayed, ->() { where(is_displayed: true) }
+  
   def image
     super || build_image
   end
