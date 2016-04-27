@@ -63,16 +63,14 @@
                 h2 Spa
                 p.subtitle Giúp bạn có một làn da như ý
                 p.more
-                  = link_to 'Dịch vụ', service_path, class: 'c-button m-type-2'
+                  = link_to 'Xem chi tiết', service_path, class: 'c-button m-type-2'
             .c-gallery.m-paginated
-              .thumb-list.owl-carousel.owl-theme style=("opacity: 1; display: block;") 
-                .owl-wrapper-outer
-                  .owl-wrapper style=("width: 4032px; left: 0px; display: block;") 
-                    - @all_services.each do |sv|
-                      .owl-item.active style=("width: 252px;") 
-                        .thumb
-                          = link_to service_path, class: 'lightbox'
-                            img src="#{sv.image_url}"
+              .thumb-list.owl-carousel.owl-theme
+                - @all_services.each do |sv|
+                  .owl-item.active
+                    .thumb
+                      = link_to sv.image_url, class: 'lightbox'
+                        img src="#{sv.image_url(:medium)}"
         - if @blog_news.length >= 4
           section
             header

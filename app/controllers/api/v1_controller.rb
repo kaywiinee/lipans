@@ -23,8 +23,13 @@ class Api::V1Controller < ApiController
     render_failed_by_missing_params('Thiếu biến') and return if params[:type].nil?
     types = Type.kind(params[:type])
     types = types.displayed if params[:all].nil?
-    types_json = types.as_json(methods: [:image_url])
-    render_success(types_json)
+    result = []
+    types.each do |type|
+      type_json = type.as_json
+      type_json['image_url'] = type.image_url(:small)
+      result << type_json
+    end
+    render_success(result)
   end
 
   # create or update service

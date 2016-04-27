@@ -16,7 +16,7 @@
                 .row
                   .col-sm-2
                     p.textalign-center.margin-sides-auto.max-width-180
-                      img.rounded alt="#{type.name}" src="#{type.image_url}"
+                      img.rounded alt="#{type.name}" src="#{type.image_url(:small)}"
                   .col-sm-10
                     ul.c-accordion
                       - type.services.each do |service|
