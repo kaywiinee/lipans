@@ -64,8 +64,8 @@
                       | {{service.name}}
                     td 
                       | {{service.description}}
-                    td 
-                      | {{service.price}}.000
+                    / td 
+                    /   | {{service.price}}.000
                     td
                       | {{service.types.names}}
                     td ng-bind="service.is_displayed == 1 ? 'Hiện' : 'Ẩn'"

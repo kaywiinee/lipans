@@ -27,9 +27,9 @@
                       .product-status-inner
                         i.ico.fa.fa-check
                         h5 Giá:
-                    .product-price
-                      strong.price
-                        | #{@product.price}.000VND
+                    / .product-price
+                    /   strong.price
+                    /     | #{@product.price}.000VND
               #product-tabs.c-tabs.product-tabs
                 ul.tab-list
                   li.m-active Mô tả sản phẩm
@@ -60,9 +60,9 @@
                               .review-content.various-content
                                 p
                                   = product.description.html_safe
-                              .review-info
-                                .review-money
-                                  | #{product.price}.000VND
+                              / .review-info
+                              /   .review-money
+                              /     | #{product.price}.000VND
               .related-products
                 h2.heading-2 Dùng thử
                 .row
@@ -74,8 +74,8 @@
                             = image_tag product.image_url, alt: product.name
                         h4.product-title
                           = link_to product.name , product_path(product.id)
-                        p.product-price
-                          | #{product.price}.000VND
+                        / p.product-price
+                        /   | #{product.price}.000VND
         .col-md-4
           = render 'part/side_bar'
   = render 'layouts/footer'

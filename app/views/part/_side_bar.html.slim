@@ -11,8 +11,8 @@ aside#sidebar
                   = image_tag product.image_url, alt: product.name
               h4.product-title
                 = link_to product.name , product_path(product.id)
-              p.product-price
-                | #{product.price}.000VND
+              / p.product-price
+              /   | #{product.price}.000VND
   .sidebar-widget.sidebar-search
     h3.widget-title Tìm kiếm
     .widget-content
