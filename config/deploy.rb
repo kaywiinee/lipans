@@ -5,7 +5,7 @@ set :application, 'lipans'
 set :repo_url, 'git@github.com:kaywiinee/lipans.git'
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.1.0'
+set :rbenv_ruby, '2.3.1'
 
 set :branch, :master
 
