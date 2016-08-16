@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 20160426094257) do
   create_table "types", force: true do |t|
     t.string  "name"
     t.string  "kind"
-    t.string  "image_url"
     t.boolean "is_displayed"
   end
 
