@@ -22,3 +22,7 @@ production:
 staging: 
   <<: *default
   database: lipans_staging
+
+test:
+  <<: *default
+  database: lipans_test

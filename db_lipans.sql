@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.24, for osx10.8 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
--- Host: 127.0.0.1    Database: lipans_development
+-- Host: localhost    Database: lipans_development
 -- ------------------------------------------------------
--- Server version	5.6.26
+-- Server version	5.7.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,161 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `blogs`
+--
+
+DROP TABLE IF EXISTS `blogs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blogs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `content` text,
+  `type_id` int(11) DEFAULT NULL,
+  `is_displayed` tinyint(1) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `views` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blogs`
+--
+
+LOCK TABLES `blogs` WRITE;
+/*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ckeditor_assets`
+--
+
+DROP TABLE IF EXISTS `ckeditor_assets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ckeditor_assets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data_file_name` varchar(255) NOT NULL,
+  `data_content_type` varchar(255) DEFAULT NULL,
+  `data_file_size` int(11) DEFAULT NULL,
+  `assetable_id` int(11) DEFAULT NULL,
+  `assetable_type` varchar(30) DEFAULT NULL,
+  `type` varchar(30) DEFAULT NULL,
+  `width` int(11) DEFAULT NULL,
+  `height` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_ckeditor_assetable` (`assetable_type`,`assetable_id`) USING BTREE,
+  KEY `idx_ckeditor_assetable_type` (`assetable_type`,`type`,`assetable_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ckeditor_assets`
+--
+
+LOCK TABLES `ckeditor_assets` WRITE;
+/*!40000 ALTER TABLE `ckeditor_assets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ckeditor_assets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contacts`
+--
+
+DROP TABLE IF EXISTS `contacts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `message` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contacts`
+--
+
+LOCK TABLES `contacts` WRITE;
+/*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `delayed_jobs`
+--
+
+DROP TABLE IF EXISTS `delayed_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `delayed_jobs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `priority` int(11) NOT NULL DEFAULT '0',
+  `attempts` int(11) NOT NULL DEFAULT '0',
+  `handler` text NOT NULL,
+  `last_error` text,
+  `run_at` datetime DEFAULT NULL,
+  `locked_at` datetime DEFAULT NULL,
+  `failed_at` datetime DEFAULT NULL,
+  `locked_by` varchar(255) DEFAULT NULL,
+  `queue` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `delayed_jobs_priority` (`priority`,`run_at`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `delayed_jobs`
+--
+
+LOCK TABLES `delayed_jobs` WRITE;
+/*!40000 ALTER TABLE `delayed_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `delayed_jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `parent_type` varchar(255) DEFAULT NULL,
+  `image_file_name` varchar(255) DEFAULT NULL,
+  `image_content_type` varchar(255) DEFAULT NULL,
+  `image_file_size` int(11) DEFAULT NULL,
+  `image_updated_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `products`
@@ -67,8 +222,87 @@ CREATE TABLE `schema_migrations` (
 
 LOCK TABLES `schema_migrations` WRITE;
 /*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
-INSERT INTO `schema_migrations` VALUES ('20160311065508'),('20160315095051');
+INSERT INTO `schema_migrations` VALUES ('20160311065508'),('20160315095051'),('20160318041537'),('20160319045934'),('20160331061438'),('20160331062032'),('20160401073311'),('20160412064314'),('20160413062541'),('20160413063616'),('20160414080618'),('20160415105641'),('20160422091154'),('20160426094257');
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `services`
+--
+
+DROP TABLE IF EXISTS `services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `services` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `description` text,
+  `price` int(11) DEFAULT NULL,
+  `is_displayed` tinyint(1) DEFAULT '1',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `services`
+--
+
+LOCK TABLES `services` WRITE;
+/*!40000 ALTER TABLE `services` DISABLE KEYS */;
+/*!40000 ALTER TABLE `services` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `simple_captcha_data`
+--
+
+DROP TABLE IF EXISTS `simple_captcha_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `simple_captcha_data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(40) DEFAULT NULL,
+  `value` varchar(6) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_key` (`key`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `simple_captcha_data`
+--
+
+LOCK TABLES `simple_captcha_data` WRITE;
+/*!40000 ALTER TABLE `simple_captcha_data` DISABLE KEYS */;
+/*!40000 ALTER TABLE `simple_captcha_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `type_services`
+--
+
+DROP TABLE IF EXISTS `type_services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `type_services` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type_id` int(11) DEFAULT NULL,
+  `service_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `type_services`
+--
+
+LOCK TABLES `type_services` WRITE;
+/*!40000 ALTER TABLE `type_services` DISABLE KEYS */;
+/*!40000 ALTER TABLE `type_services` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -81,6 +315,8 @@ DROP TABLE IF EXISTS `types`;
 CREATE TABLE `types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
+  `kind` varchar(255) DEFAULT NULL,
+  `is_displayed` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -91,8 +327,45 @@ CREATE TABLE `types` (
 
 LOCK TABLES `types` WRITE;
 /*!40000 ALTER TABLE `types` DISABLE KEYS */;
-INSERT INTO `types` VALUES (1,'Mụn'),(2,'Trắng mặt'),(3,'Nám'),(4,'Cao cấp'),(5,'Những loại khác');
+INSERT INTO `types` VALUES (1,'Mụn','product',1),(2,'Trắng mặt','product',1),(3,'Nám','product',1),(4,'Cao cấp','product',1),(5,'Những loại khác','product',1);
 /*!40000 ALTER TABLE `types` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `encrypted_password` varchar(255) NOT NULL DEFAULT '',
+  `reset_password_token` varchar(255) DEFAULT NULL,
+  `reset_password_sent_at` datetime DEFAULT NULL,
+  `remember_created_at` datetime DEFAULT NULL,
+  `sign_in_count` int(11) NOT NULL DEFAULT '0',
+  `current_sign_in_at` datetime DEFAULT NULL,
+  `last_sign_in_at` datetime DEFAULT NULL,
+  `current_sign_in_ip` varchar(255) DEFAULT NULL,
+  `last_sign_in_ip` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `type_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_users_on_email` (`email`) USING BTREE,
+  UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -104,4 +377,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 17:23:34
+-- Dump completed on 2016-08-17 11:29:35
