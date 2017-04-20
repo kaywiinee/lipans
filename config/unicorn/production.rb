@@ -1,7 +1,7 @@
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
-DEPLOY_PATH = "/home/ubuntu/lipans/production"
+DEPLOY_PATH = "/home/deploy/lipans/production"
 CURRENT_PATH = "#{DEPLOY_PATH}/current"
 WORKERS = 4
 
